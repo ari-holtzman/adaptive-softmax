@@ -124,7 +124,7 @@ function AdaptiveSoftMax:updateParameters(learningRate)
    end
 end
 
-function AdaptiveSoftMax:getLogProb(input)
+function AdaptiveSoftMax:topk(input, k, l, nhyp)
    local lsm   = nn.LogSoftMax():cuda()
 
    self.head:updateOutput(input)
@@ -151,5 +151,93 @@ function AdaptiveSoftMax:getLogProb(input)
       proba:narrow(2, pos, tsz):add(lsm.output)
    end
 
-   return proba
+   if nhyp and l and nhyp > 1 and l > 1 then
+       proba = proba:reshape(l, nhyp, proba:size(2))
+   end
+   local proba = proba[proba:size(1)]
+   local vals, idxs = torch.topk(proba, k, 1, true, true)
+   return vals, idxs
+end
+
+-- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
+function AdaptiveSoftMax:getseqprobs(input, k, seqs)
+   local lsm   = nn.LogSoftMax():cuda()
+
+   self.head:updateOutput(input)
+
+   local bsz   = self.head.output:size(1)
+   local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+   lsm:updateOutput(self.head.output)
+   proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+      buffer = buffer:expand(bsz, tsz)
+      proba:narrow(2, pos, tsz):copy(buffer)
+   end
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      self.tail[i]:updateOutput(input)
+      lsm:updateOutput(self.tail[i].output)
+      proba:narrow(2, pos, tsz):add(lsm.output)
+   end
+
+   local l = seqs:size(1)
+   local v = proba:nElement() / l
+   if seq:dim() == 1 then seq:expand(l, 1) end
+   local all_word_probs = proba:resize(l, v)
+   local base_prob = 0
+   for i = 1, l do
+       base_prob = base_prob + all_word_probs[i][seqs[i]]
+   end
+   local k_seq_probs, k_word_idxs = all_word_probs[l]:topk(k, 1, true, true) 
+   k_seq_probs:add(base_prob)
+
+   return k_seq_probs, k_word_idxs
+end
+
+-- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
+function AdaptiveSoftMax:topknext(input, seq)
+   local lsm   = nn.LogSoftMax():cuda()
+
+   self.head:updateOutput(input)
+
+   local bsz   = self.head.output:size(1)
+   local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+   lsm:updateOutput(self.head.output)
+   proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+      buffer = buffer:expand(bsz, tsz)
+      proba:narrow(2, pos, tsz):copy(buffer)
+   end
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      self.tail[i]:updateOutput(input)
+      lsm:updateOutput(self.tail[i].output)
+      proba:narrow(2, pos, tsz):add(lsm.output)
+   end
+
+   local k, l = seqs:size(2), seqs:size(1)
+   local v = proba:nElement() / (l * k)
+   local all_word_probs = proba:resize(l, k, v)
+   local seq_probs = torch.CudaTensor(k):zero()
+   for i = 1, l do
+       for j = 1, k do
+           seq_probs[j] = seq_probs[j] + all_word_probs[i][j][seqs[i][j]]
+       end
+   end
+
+   return seq_probs
 end
