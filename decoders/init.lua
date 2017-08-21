@@ -40,24 +40,34 @@ decoders.beam_search =
             for i = 1, width do
                 state[1][1][i] = beam[i].state[1]
                 state[2][1][i] = beam[i].state[2]
-
                 input[1][i] = beam[i].next_token
             end
 
             -- step RNN once
             local inter = model:forward({{state}, input})
-            error('Beam Search has not been implemented!') 
-            local tok_probs, tok_idxs = dec:topknext(inter, width, input, term)
+            local tok_probs, tok_idxs = dec:topknext(inter, width*width, input)
 
             -- update beam
-            local nu_beam
-            for i = 1, width do
-                error('Beam Search has not been implemented!') 
+            local nu_beam = {}
+            while #nu_beam < width do
+                local i = #nu_beam + 1
+                local p, c, w = tok_probs[i], tok_idxs[i][1], tok_idxs[i][2]
+                local cand = beam[c]
+                local term = cand.t_loc.looking_for
+                if w == term then
+                    if best == nil or p > best.prob then
+                        -- NEW CANDIDATE TO REPLACE BEST
+                        error('Beam Search has not been implemented!') 
+                    end
+                else
+                    -- ADD NEW CANDIDATE TO BEAM
+                    error('Beam Search has not been implemented!') 
+                end
             end
             beam = nu_beam
-            error('Beam Search has not been implemented!') 
         end
         
+        error('Beam Search has not been implemented!') 
         return best
     end
 
