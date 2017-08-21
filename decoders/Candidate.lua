@@ -13,6 +13,6 @@ function Candidate:__init(opts)
 
     self.t_loc = opts and opts.t_loc
     if not self.t_loc then
-        self.t_loc = { chunk_idx: 1, word_idx: 1, looking_for: 0 }
+        self.t_loc = { chunk_idx=1, word_idx=1, looking_for=0 }
     end
 end

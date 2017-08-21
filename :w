@@ -10,10 +10,7 @@ decoders.beam_search =
         local prefix = template[1]
         local suffix = template[2]
         local inter = model:forward({rnn:initializeHidden(1), prefix})
-        local proc_prefix = prefix:resize(prefix:size(1), 1)
-        local first_probs, first_idxs = dec:topknext(inter, width, proc_prefix)
-        first_idxs:transpose(1, 2)
-        first_idxs = first_idxs[2]
+        local first_probs, first_idxs = dec:topknext(inter, width, prefix)
         local init_hidden = rnn:getLastHidden()[1]
         local state_vec_len = init_hidden[1]:size(3)
         local term = suffix[1]
@@ -43,18 +40,6 @@ decoders.beam_search =
 
                 input[1][i] = beam[i].next_token
             end
-
-            -- step RNN once
-            local inter = model:forward({{state}, input})
-            error('Beam Search has not been implemented!') 
-            local tok_probs, tok_idxs = dec:topknext(inter, width, input, term)
-
-            -- update beam
-            local nu_beam
-            for i = 1, width do
-                error('Beam Search has not been implemented!') 
-            end
-            beam = nu_beam
             error('Beam Search has not been implemented!') 
         end
         

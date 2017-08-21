@@ -161,51 +161,42 @@ end
 
 -- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
 function AdaptiveSoftMax:topknext(input, k, seqs)
-    local lsm   = nn.LogSoftMax():cuda()
+   local lsm   = nn.LogSoftMax():cuda()
 
-    self.head:updateOutput(input)
+   self.head:updateOutput(input)
 
-    local bsz   = self.head.output:size(1)
-    local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+   local bsz   = self.head.output:size(1)
+   local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
 
-    lsm:updateOutput(self.head.output)
-    proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+   lsm:updateOutput(self.head.output)
+   proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
 
-    for i = 1, #self.tail do
-       local pos = self.cutoff[i] + 1
-       local tsz = self.cutoff[i+1] - self.cutoff[i]
-       local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
-       buffer = buffer:expand(bsz, tsz)
-       proba:narrow(2, pos, tsz):copy(buffer)
-    end
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+      buffer = buffer:expand(bsz, tsz)
+      proba:narrow(2, pos, tsz):copy(buffer)
+   end
 
-    for i = 1, #self.tail do
-       local pos = self.cutoff[i] + 1
-       local tsz = self.cutoff[i+1] - self.cutoff[i]
-       self.tail[i]:updateOutput(input)
-       lsm:updateOutput(self.tail[i].output)
-       proba:narrow(2, pos, tsz):add(lsm.output)
-    end
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      self.tail[i]:updateOutput(input)
+      lsm:updateOutput(self.tail[i].output)
+      proba:narrow(2, pos, tsz):add(lsm.output)
+   end
 
-    local l, n = seqs:size(1), seqs:size(2)
-    local v = proba:nElement() / l
-    local all_word_probs = proba:resize(l, n, v)
-    local base_probs = torch.Tensor(n)
-    for i = 1, l do
-        for j = 1, seqs do
-            base_probs[j] = base_probs[j] + all_word_probs[i][j][seqs[i][j]]
-        end
-    end
-    local final_word_probs = all_word_probs[l]:view(-1)
-    local k_seq_probs, k_word_abs_idxs = final_word_probs:topk(k, 1, true, true) 
-    local k_word_idxs = torch.Tensor(k, 2)
-    for i = 1, k do
-        local prob, abs_idx = k_seq_probs[i], k_word_abs_idxs[i]
-        local can_idx = idx / v
-        local tok_idx = idx % v
-        k_seq_probs[i] = prob + base_probs[can_idx]
-        k_word_idxs[i] = torch.Tensor({can_idx, tok_idx})
-    end
+   local l, n = seqs:size(1), seqs:size(2)
+   local v = proba:nElement() / l
+   local all_word_probs = proba:resize(l, n, v)
+   local base_prob = 0
+   for i = 1, l do
+       for j = 1, seqs
+       base_prob = base_prob + all_word_probs[i][seq[i]]
+   end
+   local k_seq_probs, k_word_idxs = all_word_probs[l]:topk(k, 1, true, true) 
+   k_seq_probs:add(base_prob)
 
-    return k_seq_probs, k_word_idxs
+   return k_seq_probs, k_word_idxs
 end
