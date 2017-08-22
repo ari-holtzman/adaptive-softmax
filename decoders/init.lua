@@ -1,5 +1,19 @@
 require 'decoders.Candidate'
 
+function shallowcopy(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for orig_key, orig_value in pairs(orig) do
+            copy[orig_key] = orig_value
+        end
+    else -- number, string, boolean, etc
+        copy = orig
+    end
+    return copy
+end
+
 local decoders = {}
 
 decoders.beam_search =
@@ -46,6 +60,7 @@ decoders.beam_search =
             -- step RNN once
             local inter = model:forward({{state}, input})
             local tok_probs, tok_idxs = dec:topknext(inter, width*width, input)
+            local nu_hidden = rnn.getLastHidden()[1]
 
             -- update beam
             local nu_beam = {}
@@ -54,20 +69,35 @@ decoders.beam_search =
                 local p, c, w = tok_probs[i], tok_idxs[i][1], tok_idxs[i][2]
                 local cand = beam[c]
                 local term = cand.t_loc.looking_for
+                local nu_seq = table.insert(shallowcopy(cand.seq), w)
                 if w == term then
                     if best == nil or p > best.prob then
-                        -- NEW CANDIDATE TO REPLACE BEST
-                        error('Beam Search has not been implemented!') 
+                        best = Candidate( 
+                                          { 
+                                            p = p,
+                                            seq = nu_seq,
+                                            state = {},
+											t_loc = {}
+                                          }
+                                        )
                     end
                 else
-                    -- ADD NEW CANDIDATE TO BEAM
-                    error('Beam Search has not been implemented!') 
+                    local nu_state = { nu_hidden[1][1][c], nu_hidden[2][1][c] }
+                    local nu_cand = Candidate(
+                                                {
+                                                    p = p,
+                                                    next_token = w,
+                                                    seq = nu_seq,
+                                                    t_loc = cand.t_loc,
+                                                    state = nu_state
+                                                }
+                                             )
+                    table.insert(nu_beam, nu_cand)
                 end
             end
             beam = nu_beam
         end
         
-        error('Beam Search has not been implemented!') 
         return best
     end
 
