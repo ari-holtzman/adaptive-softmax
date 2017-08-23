@@ -1,7 +1,6 @@
 -- Copyright (c) 2016-present, Facebook, Inc.
 -- All rights reserved.
---
--- This source code is licensed under the BSD-style license found in the
+-- -- This source code is licensed under the BSD-style license found in the
 -- LICENSE file in the root directory of this source tree. An additional grant
 -- of patent rights can be found in the PATENTS file in the same directory.
 
@@ -160,7 +159,7 @@ function AdaptiveSoftMax:topk(input, k, l, nhyp)
 end
 
 -- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
-function AdaptiveSoftMax:topknext(input, k, seqs)
+function AdaptiveSoftMax:topknext(input, k, seqs, base_probs)
     local lsm   = nn.LogSoftMax():cuda()
 
     self.head:updateOutput(input)
@@ -188,24 +187,25 @@ function AdaptiveSoftMax:topknext(input, k, seqs)
     end
 
     local l, n = seqs:size(1), seqs:size(2)
-    local v = proba:nElement() / l
+    local v = proba:nElement() / (l * n)
     local all_word_probs = proba:resize(l, n, v)
-    local base_probs = torch.Tensor(n)
-    for i = 1, l do
-        for j = 1, seqs do
-            base_probs[j] = base_probs[j] + all_word_probs[i][j][seqs[i][j]]
+    local seq_probs = base_probs:clone()
+    for i = 1, l-1 do
+        for j = 1, n do
+            seq_probs[j] = seq_probs[j] + all_word_probs[i][j][seqs[i+1][j]]
         end
     end
-    local final_word_probs = all_word_probs[l]:view(-1)
-    local k_seq_probs, k_word_abs_idxs = final_word_probs:topk(k, 1, true, true) 
+    local base_mask = seq_probs:view(n, 1):repeatTensor(1, v):cuda()
+    local final_word_probs = all_word_probs[l]:add(base_mask):view(-1)
+
+    local k_seq_probs, k_word_abs_idxs = torch.topk(final_word_probs, k, 1, true, true) 
     local k_word_idxs = torch.Tensor(k, 2)
     for i = 1, k do
-        local prob, abs_idx = k_seq_probs[i], k_word_abs_idxs[i]
-        local can_idx = idx / v
-        local tok_idx = idx % v
-        k_seq_probs[i] = prob + base_probs[can_idx]
+        local abs_idx = k_word_abs_idxs[i]
+        local can_idx = math.floor((abs_idx-1) / v) + 1
+        local tok_idx = ((abs_idx-1) % v) + 1
         k_word_idxs[i] = torch.Tensor({can_idx, tok_idx})
     end
 
-    return k_seq_probs, k_word_idxs
+   return k_seq_probs, k_word_idxs
 end
