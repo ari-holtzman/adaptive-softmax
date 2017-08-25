@@ -3,8 +3,7 @@ require 'decoders.Candidate'
 function shallowcopy(orig)
     local orig_type = type(orig)
     local copy
-    if orig_type == 'table' then
-        copy = {}
+    if orig_type == 'table' then copy = {}
         for orig_key, orig_value in pairs(orig) do
             copy[orig_key] = orig_value
         end
@@ -124,14 +123,12 @@ decoders.beam_search =
 
 decoders.template_beam_search =
     function(model, rnn, dec, width, template)
-        local result = {}
         local state = rnn:initializeHidden(1)
         local state_vec_len = state[1][1]:size(3)
         for c = 1, (#template-1) do
             -- prepare beam
             local prefix = template[c]
             local proc_prefix = prefix:view(prefix:size(1), 1)
-            for i = 1, prefix:size(1) do table.insert(result, prefix[i]) end
             local inter = model:forward({state, proc_prefix})
 
             local base_probs = torch.CudaTensor(1):zero()
@@ -142,23 +139,29 @@ decoders.template_beam_search =
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
             local raw_hidden = rnn:getLastHidden()
-            local term = template[c+1][1]
+            local suffix = template[c+1]
+            local term = suffix[1]
             local init_hidden = { 
                                   raw_hidden[1][1]:clone(),
                                   raw_hidden[1][2]:clone()
                                 }
-            local init_seq = shallowcopy(result)
+            local init_seq = {}
+            for i = 1, prefix:size(1) do table.insert(init_seq, prefix[i]) end
             local beam = {}
             local i = 1
             while #beam < width do 
-                if first_idxs[i] ~= term then
+                local w = first_idxs[i]
+                if w ~= term then
+                    local seq = shallowcopy(init_seq)
+                    table.insert(seq, w)
                     local cand = Candidate( {
                                                 state = init_hidden,
                                                 next_token = first_idxs[i],
-                                                seq = init_seq
+                                                seq = seq
                                           } )
                     table.insert(beam, cand)
                 end
+                i = i + 1
             end
     
             -- beam search
@@ -170,7 +173,6 @@ decoders.template_beam_search =
                           }
             local input = torch.CudaTensor(1, width)
             while (not best) or (best.p < beam[1].p) do
-                print(best)
                 -- prepare state
                 for i = 1, width do
                     cur_state[1][1][i] = beam[i].state[1]
@@ -202,6 +204,9 @@ decoders.template_beam_search =
                                      }
                     if w == term then
                         if best == nil or p > best.p then
+                            for i = 2, suffix:size(1) do
+                                table.insert(nu_seq, suffix[i])
+                            end
                             best = Candidate( 
                                               { 
                                                 p = p,
@@ -224,6 +229,7 @@ decoders.template_beam_search =
                 end
                 beam = nu_beam
             end
+            result = best.seq
             state = { best.state }
         end
             
