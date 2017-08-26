@@ -62,6 +62,7 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local line = io.read()
+line = "</s> would you like to have <vbd> \t </vbd> the <np> \t </np> ? </s>"
 local ne = 0
 while line ~= "\n" do
     local template = {}
@@ -88,5 +89,5 @@ while line ~= "\n" do
     
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end
-    local line = io.read()
+    line = io.read()
 end

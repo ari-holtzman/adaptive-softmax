@@ -123,11 +123,12 @@ decoders.beam_search =
 
 decoders.template_beam_search =
     function(model, rnn, dec, width, template)
-        local state = rnn:initializeHidden(1)
-        local state_vec_len = state[1][1]:size(3)
+        local prefix = template[1]
+        local inter
         for c = 1, (#template-1) do
             -- prepare beam
-            local prefix = template[c]
+            local state = rnn:initializeHidden(1)
+            local state_vec_len = state[1][1]:size(3)
             local proc_prefix = prefix:view(prefix:size(1), 1)
             local inter = model:forward({state, proc_prefix})
 
@@ -230,6 +231,7 @@ decoders.template_beam_search =
                 beam = nu_beam
             end
             result = best.seq
+            prefix = torch.CudaTensor(best.seq)
             state = { best.state }
         end
             
