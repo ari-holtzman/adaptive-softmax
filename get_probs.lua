@@ -19,7 +19,7 @@ cmd:option('-seed', 1, 'Seed for the random generator')
 cmd:option('-modeldir',  '', 'Path to the directory with model and dic')
 cmd:option('-textpath',  '', 'Path to text file with sentences')
 cmd:option('-devid', 1,  'GPU to use')
-cmd:option('-bsz', 128, 'batch size')
+cmd:option('-bsz', 1, 'batch size')
 
 local config = cmd:parse(arg)
 
@@ -32,13 +32,14 @@ local dicpath = paths.concat(config.modeldir, 'dic.txt')
 
 local dic
 if paths.filep(dicpath) then
-    dic = data.loaddictionary(config.dicpath)
+    dic = data.loaddictionary(dicpath)
 else
     error('Dictionary not found!')
 end
 local all = torch.load(modelpath)
 dic = data.sortthresholddictionary(dic, all.config.threshold)
-collectgarbage()
+
+print('dsfdfs')
 
 local ntoken = #dic.idx2word
 
@@ -85,6 +86,7 @@ for _, line in pairs(prefix_test_cases) do
     ne = ne + 1
     
     if ne % bsz == 0 then
+        print('dog')
         local seqs = torch.CudaTensor(sents):t()
         local inter = model2:forward({rnn:initializeHidden(bsz), seqs})
         local probs = dec:getSeqProbs(inter, seqs)
