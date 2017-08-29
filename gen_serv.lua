@@ -61,10 +61,9 @@ local model2 = nn.Sequential()
    :add(nn.SelectTable(-1))
    :add(nn.JoinTable(1)):cuda()
 
-local line = io.read()
-line = "</s> would you like to have <vbd> \t </vbd> the <np> \t </np> ? </s>"
 local ne = 0
-while line ~= "\n" do
+local line = io.read()
+while line ~= nil do
     local template = {}
     local i = 1
     for s in line:gmatch("[^\t]+") do

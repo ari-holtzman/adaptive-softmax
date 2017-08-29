@@ -122,7 +122,7 @@ decoders.beam_search =
     end
 
 decoders.template_beam_search =
-    function(model, rnn, dec, width, template)
+    function(model, rnn, dec, width, template, dic)
         local prefix = template[1]
         local inter
         for c = 1, (#template-1) do
@@ -168,13 +168,18 @@ decoders.template_beam_search =
             -- beam search
             local best = nil
             local base_probs = torch.CudaTensor(width):zero()
-            local cur_state = { 
-                             torch.CudaTensor(1, width, state_vec_len),
-                             torch.CudaTensor(1, width, state_vec_len)
-                          }
             local input = torch.CudaTensor(1, width)
             while (not best) or (best.p < beam[1].p) do
+                                for i = 1, #beam[1].seq do
+                    io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
+                end
+                print('')
+
                 -- prepare state
+                local cur_state = { 
+                                    torch.CudaTensor(1, width, state_vec_len),
+                                    torch.CudaTensor(1, width, state_vec_len)
+                                  }
                 for i = 1, width do
                     cur_state[1][1][i] = beam[i].state[1]
                     cur_state[2][1][i] = beam[i].state[2]
@@ -200,8 +205,8 @@ decoders.template_beam_search =
                     local nu_seq = shallowcopy(cand.seq)
                     table.insert(nu_seq, w)
                     local nu_state = { 
-                                       nu_hidden[1][1][c]:clone(),
-                                       nu_hidden[2][1][c]:clone()
+                                       nu_hidden[1][1][n]:clone(),
+                                       nu_hidden[2][1][n]:clone()
                                      }
                     if w == term then
                         if best == nil or p > best.p then
