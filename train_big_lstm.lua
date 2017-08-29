@@ -44,11 +44,14 @@ cmd:option('-threshold', 0,  'Threshold for <unk> words')
 cmd:option('-cutoff', '',   'Cutoff for AdaptiveSoftMax')
 
 cmd:option('-usecudnn', false, '')
+cmd:option('-devid', 1, 'gpu id')
 
 local config = cmd:parse(arg)
 
 torch.manualSeed(config.seed)
 cutorch.manualSeed(config.seed)
+
+cutorch.setDevice(config.devid)
 
 --------------------------------------------------------------------------------
 -- SET LOGGER
