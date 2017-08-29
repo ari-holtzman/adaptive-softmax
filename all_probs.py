@@ -1,5 +1,5 @@
 import argparse, os
-from subprocess import run
+from subprocess import check_output
 
 parser = argparse.ArgumentParser()
 parser.add_argument('text_dir', type=str, help='directory with text files')
@@ -14,10 +14,11 @@ for filename in filenames:
     name, extension = name.decode('utf-8'), extension.decode('utf-8')
     if extension == '.txt':
         text_path = os.path.join(text_dir_path, filename)
-        args = ['th', 'get_probs.lua',
+        cur_args = ['th', 'get_probs.lua',
                 '-modeldir', args.model_dir,
                 '-textpath', text_path]
-        comp_proc = run(args)
+        output = check_output(cur_args)
         out_filename = '%s_probs%s' % (name, extension)
-        with open(out_filename, 'wb') as out_file:
-            out_file.write(comp_proc.stdout)
+        out_path = os.path.join(args.text_dir, out_filename)
+        with open(out_path, 'wb') as out_file:
+            out_file.write(output)

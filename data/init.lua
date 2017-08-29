@@ -42,7 +42,6 @@ data.initdictionary = function()
 end
 
 data.savedictionary = function(dic, filename)
-   print(filename)
    local fout = io.open(filename, 'w')
    for i = 1, #dic.idx2word do
       fout:write(i ..' '.. dic.idx2word[i] ..' '.. dic.idx2freq[i] ..'\n')
@@ -83,7 +82,6 @@ data.makedictionary = function(filename)
       and dic.idx2freq[2] or 1 -- nonzero hack
 
    dic.idx2freq = torch.Tensor(dic.idx2freq)
-   print(string.format("| Dictionary size %d", #dic.idx2word))
    return dic
 end
 
@@ -101,7 +99,6 @@ data.sortthresholddictionary = function(dic, threshold)
 
    collectgarbage()
    collectgarbage()
-   print(string.format("| Dictionary size %d", #newdic.idx2word))
 
    return newdic
 end
@@ -136,8 +133,6 @@ data.loadfile = function(filename, dic)
    end
    tensor = add_data_to_tensor(tensor, buffer)
 
-   print(string.format("| Load file %s: %d tokens",
-                       filename, tensor:size(1)))
    collectgarbage()
 
    return tensor

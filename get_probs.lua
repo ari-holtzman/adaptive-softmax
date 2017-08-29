@@ -20,7 +20,6 @@ cmd:option('-modeldir',  '', 'Path to the directory with model and dic')
 cmd:option('-textpath',  '', 'Path to text file with sentences')
 cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-bsz', 1, 'batch size')
-
 local config = cmd:parse(arg)
 
 torch.manualSeed(config.seed)
@@ -38,8 +37,6 @@ else
 end
 local all = torch.load(modelpath)
 dic = data.sortthresholddictionary(dic, all.config.threshold)
-
-print('dsfdfs')
 
 local ntoken = #dic.idx2word
 
@@ -67,33 +64,53 @@ local model2 = nn.Sequential()
 
 local f = assert(io.open(config.textpath, "r"))
 local line = f:read("*line")
-local ne = 0
+local ne, ml = 0, 0
 local sents = {}
-for _, line in pairs(prefix_test_cases) do
+while line ~= nil do
     local sent = {}
-    local ml = 0
 	for word in string.gmatch(line, "[^ ]+") do
     	table.insert(sent, data.getidx(dic, word))
         ml = math.max(#sent, ml)
     end
     table.insert(sents, sent)
+    ne = ne + 1
+    
+    if ne % config.bsz == 0 then
+        for i = 1, #sents do
+            local sent = sents[i] 
+            while #sent <  ml do
+                table.insert(sent, 0)
+            end
+        end
+        local seqs = torch.CudaTensor(sents):t()
+        local rnn_seqs = seqs:clone()
+        rnn_seqs[rnn_seqs:eq(0)] = 1
+        
+        local inter = model2:forward({rnn:initializeHidden(config.bsz), 
+                                      rnn_seqs})
+        local probs = dec:getSeqProbs(inter, seqs)
+        for i = 1, probs:size(1) do print(probs[i]) end
+        sents = {}
+        ml = 0
+    end
+    
+    if ne % (config.bsz * 10) == 0 then collectgarbage() end
+    line = f:read("*line")
+end
+
+if #sents > 0 then
+    local fbsz = #sents
     for i = 1, #sents do
         local sent = sents[i] 
         while #sent <  ml do
             table.insert(sent, 0)
         end
     end
-    ne = ne + 1
+    local seqs = torch.CudaTensor(sents):t()
+    local rnn_seqs = seqs:clone()
+    rnn_seqs[rnn_seqs:eq(0)] = 1
     
-    if ne % bsz == 0 then
-        print('dog')
-        local seqs = torch.CudaTensor(sents):t()
-        local inter = model2:forward({rnn:initializeHidden(bsz), seqs})
-        local probs = dec:getSeqProbs(inter, seqs)
-        for i = 1, probs:size(1) do print(probs[i]) end
-        sents = {}
-    end
-    
-    if ne % (bsz * 10) == 0 then collectgarbage() end
-    line = f:read("*line")
+    local inter = model2:forward({rnn:initializeHidden(fbsz), rnn_seqs})
+    local probs = dec:getSeqProbs(inter, seqs)
+    for i = 1, probs:size(1) do print(probs[i]) end
 end

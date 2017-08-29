@@ -210,7 +210,7 @@ function AdaptiveSoftMax:topknext(input, k, seqs, base_probs)
    return k_seq_probs, k_word_idxs
 end
 
-function AdaptiveSoftMax:getSeqProb(input, seqs)
+function AdaptiveSoftMax:getSeqProbs(input, seqs)
     local lsm   = nn.LogSoftMax():cuda()
 
     self.head:updateOutput(input)
@@ -243,7 +243,7 @@ function AdaptiveSoftMax:getSeqProb(input, seqs)
     local seq_probs = torch.Tensor(n)
     for i = 1, l-1 do
         for j = 1, n do
-            local w_idx = seq[i+1][j]
+            local w_idx = seqs[i+1][j]
             if w_idx == 0 then 
                 break
             else
