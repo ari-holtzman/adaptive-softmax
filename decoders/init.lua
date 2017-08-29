@@ -122,7 +122,7 @@ decoders.beam_search =
     end
 
 decoders.template_beam_search =
-    function(model, rnn, dec, width, template, dic)
+    function(model, rnn, dec, width, template, dic, r, g, max_steps)
         local prefix = template[1]
         local inter
         for c = 1, (#template-1) do
@@ -169,11 +169,17 @@ decoders.template_beam_search =
             local best = nil
             local base_probs = torch.CudaTensor(width):zero()
             local input = torch.CudaTensor(1, width)
-            while (not best) or (best.p < beam[1].p) do
-                                for i = 1, #beam[1].seq do
-                    io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
+            local steps = 0
+            while steps < max_steps do
+                steps = steps + 1
+                if best then
+                    for i = 1, #best.seq do
+                        io.write(dic.idx2word[best.seq[i]] .. ' ')
+                    end
+                    print('')
+                else
+                    print('NONE')
                 end
-                print('')
 
                 -- prepare state
                 local cur_state = { 
@@ -204,18 +210,20 @@ decoders.template_beam_search =
                     local cand = beam[n]
                     local nu_seq = shallowcopy(cand.seq)
                     table.insert(nu_seq, w)
+                    local nu_r = p + r * ((1 - math.pow(g, #nu_seq)) / (1 - g))
                     local nu_state = { 
                                        nu_hidden[1][1][n]:clone(),
                                        nu_hidden[2][1][n]:clone()
                                      }
                     if w == term then
-                        if best == nil or p > best.p then
+                        if best == nil or nu_r > best.r then
                             for i = 2, suffix:size(1) do
                                 table.insert(nu_seq, suffix[i])
                             end
                             best = Candidate( 
                                               { 
                                                 p = p,
+                                                r = nu_r, 
                                                 seq = nu_seq,
                                                 state = nu_state
                                               }
@@ -225,6 +233,7 @@ decoders.template_beam_search =
                         local nu_cand = Candidate(
                                                     {
                                                         p = p,
+                                                        r = nu_r,
                                                         next_token = w,
                                                         seq = nu_seq,
                                                         state = nu_state

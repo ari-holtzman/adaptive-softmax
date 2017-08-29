@@ -14,12 +14,14 @@ local decoders = dofile 'decoders/init.lua'
 
 torch.setheaptracking(true)
 
-local cmd = torch.CmdLine('-', '-')
-cmd:option('-seed', 1, 'Seed for the random generator')
+local cmd = torch.CmdLine('-', '-') cmd:option('-seed', 1, 'Seed for the random generator')
 cmd:option('-dicpath',      '', 'Path to dictionary txt file')
 cmd:option('-modelpath',    '', 'Path to the model')
 cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 128, 'guesses to rerank')
+cmd:option('-r',  0, 'reward per word')
+cmd:option('-g',  0.5, 'reward decay')
+cmd:option('-maxsteps', 100, 'reward per word')
 
 local config = cmd:parse(arg)
 
@@ -37,8 +39,7 @@ local all = torch.load(config.modelpath)
 dic = data.sortthresholddictionary(dic, all.config.threshold)
 collectgarbage()
 
-local ntoken = #dic.idx2word
-
+local ntoken = #dic.idx2word 
 model = all['model']
 local lut = model.modules[1].modules[2].modules[1]
 local rnn = model.modules[2]
@@ -62,7 +63,7 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
-local line = io.read()
+local line = "<beg>\t<end>"
 while line ~= nil do
     local template = {}
     local i = 1
@@ -80,11 +81,15 @@ while line ~= nil do
                                               dec,
                                               config.k,
                                               template,
-                                              dic)
+                                              dic,
+                                              config.r,
+                                              config.g,
+                                              config.maxsteps)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
     print('')
+    print('---------------------------------')
     
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end
