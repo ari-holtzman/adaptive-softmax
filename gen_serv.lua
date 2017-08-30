@@ -83,7 +83,6 @@ while line ~= nil do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
     print('')
-    print('---------------------------------')
     
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end

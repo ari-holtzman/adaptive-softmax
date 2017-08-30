@@ -270,6 +270,7 @@ decoders.contextual_beam_search =
             
         return result
     end
+
 decoders.template_beam_search =
     function(model, rnn, dec, width, template, dic)
         local prefix = template[1]
@@ -319,10 +320,6 @@ decoders.template_beam_search =
             local base_probs = torch.CudaTensor(width):zero()
             local input = torch.CudaTensor(1, width)
             while (not best) or (best.p < beam[1].p) do
-                                for i = 1, #beam[1].seq do
-                    io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
-                end
-                print('')
 
                 -- prepare state
                 local cur_state = { 
