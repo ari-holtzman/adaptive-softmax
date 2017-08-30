@@ -19,9 +19,6 @@ cmd:option('-dicpath',      '', 'Path to dictionary txt file')
 cmd:option('-modelpath',    '', 'Path to the model')
 cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 128, 'guesses to rerank')
-cmd:option('-r',  0, 'reward per word')
-cmd:option('-g',  0.5, 'reward decay')
-cmd:option('-maxsteps', 100, 'reward per word')
 
 local config = cmd:parse(arg)
 
@@ -63,7 +60,7 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
-local line = "<beg>\t<end>"
+local line = io.read()
 while line ~= nil do
     local template = {}
     local i = 1
@@ -81,10 +78,7 @@ while line ~= nil do
                                               dec,
                                               config.k,
                                               template,
-                                              dic,
-                                              config.r,
-                                              config.g,
-                                              config.maxsteps)
+                                              dic)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end

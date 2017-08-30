@@ -210,6 +210,58 @@ function AdaptiveSoftMax:topknext(input, k, seqs, base_probs)
    return k_seq_probs, k_word_idxs
 end
 
+-- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
+function AdaptiveSoftMax:topknextfunky(input, k, seqs, base_probs, cwlt, cr)
+    local lsm   = nn.LogSoftMax():cuda()
+
+    self.head:updateOutput(input)
+
+    local bsz   = self.head.output:size(1)
+    local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+    lsm:updateOutput(self.head.output)
+    proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+       buffer = buffer:expand(bsz, tsz)
+       proba:narrow(2, pos, tsz):copy(buffer)
+    end
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       self.tail[i]:updateOutput(input)
+       lsm:updateOutput(self.tail[i].output)
+       proba:narrow(2, pos, tsz):add(lsm.output)
+    end
+
+    local l, n = seqs:size(1), seqs:size(2)
+    local v = proba:nElement() / (l * n)
+    local all_word_probs = proba:resize(l, n, v)
+    local seq_probs = base_probs:clone()
+    for i = 1, l-1 do
+        for j = 1, n do
+            seq_probs[j] = seq_probs[j] + all_word_probs[i][j][seqs[i+1][j]]
+        end
+    end
+    local base_mask = seq_probs:view(n, 1):repeatTensor(1, v):cuda()
+    local final_word_probs = all_word_probs[l]:add(base_mask)
+    final_word_probs = final_word_probs:view(-1)
+
+    local k_seq_probs, k_word_abs_idxs = torch.topk(final_word_probs, k, 1, true, true) 
+    local k_word_idxs = torch.Tensor(k, 2)
+    for i = 1, k do local abs_idx = k_word_abs_idxs[i]
+        local can_idx = math.floor((abs_idx-1) / v) + 1
+        local tok_idx = ((abs_idx-1) % v) + 1
+        k_word_idxs[i] = torch.Tensor({can_idx, tok_idx})
+    end
+
+   return k_seq_probs, k_word_idxs
+end
+
 function AdaptiveSoftMax:getSeqProbs(input, seqs)
     local lsm   = nn.LogSoftMax():cuda()
 

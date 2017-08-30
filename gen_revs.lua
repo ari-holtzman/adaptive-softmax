@@ -14,9 +14,10 @@ local decoders = dofile 'decoders/init.lua'
 
 torch.setheaptracking(true)
 
-local cmd = torch.CmdLine('-', '-') cmd:option('-seed', 1, 'Seed for the random generator')
+local cmd = torch.CmdLine('-', '-') cmd:option('-seed', 1, 'random gen seed')
 cmd:option('-dicpath',      '', 'Path to dictionary txt file')
 cmd:option('-modelpath',    '', 'Path to the model')
+cmd:option('-contextpath',    '', 'Path to text file with context words')
 cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 128, 'guesses to rerank')
 cmd:option('-r',  0, 'reward per word')
@@ -64,19 +65,21 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
-local f = assert(io.open(config.textpath, "r"))
+local f = assert(io.open(config.contextpath, "r"))
 local line = f:read("*line")
 while line ~= nil do
     local cws = {}
     for word in line:gmatch("[^ ]+") do
         cws[data.getidx(dic, word)] = true
+        io.write(word .. ' ')
     end
+    print('')
     local template = { 
-                        torch.CudaTensor(data.getidx(dic, '<beg>')),
-                        torch.CudaTensor(data.getidx(dic, '<end>'))
+                        torch.CudaTensor({data.getidx(dic, '<beg>')}),
+                        torch.CudaTensor({data.getidx(dic, '<end>')})
                      }
                        
-    local best = decoders.contexual_beam_search(model2,
+    local best = decoders.contextual_beam_search(model2,
                                               rnn,
                                               dec,
                                               config.k,
