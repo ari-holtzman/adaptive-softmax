@@ -211,7 +211,7 @@ function AdaptiveSoftMax:topknext(input, k, seqs, base_probs)
 end
 
 -- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
-function AdaptiveSoftMax:topknextfunky(input, k, seqs, base_probs, mask)
+function AdaptiveSoftMax:topknextfunky(input, k, seqs, base_probs, cwl, cr)
     local lsm   = nn.LogSoftMax():cuda()
 
     self.head:updateOutput(input)
@@ -249,7 +249,12 @@ function AdaptiveSoftMax:topknextfunky(input, k, seqs, base_probs, mask)
     end
     local base_mask = seq_probs:view(n, 1):repeatTensor(1, v):cuda()
     local final_word_probs = all_word_probs[l]:add(base_mask)
-    local fwp_t = final_word_probs:t()
+    for r, row in pairs(cwl) do
+        for c, _ in pairs(row) do
+            final_word_probs[r][c] = final_word_probs[r][c] + cr
+        end
+    end
+    final_word_probs = final_word_probs:view(-1)
 
     local k_seq_probs, k_word_abs_idxs = torch.topk(final_word_probs, k, 1, true, true) 
     local k_word_idxs = torch.Tensor(k, 2)

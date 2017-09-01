@@ -68,10 +68,12 @@ local ne = 0
 local f = assert(io.open(config.contextpath, "r"))
 local line = f:read("*line")
 while line ~= nil do
-    local cws = {}
+    local cws, cwl = {}, {}
     for word in line:gmatch("[^ ]+") do
-        cws[data.getidx(dic, word)] = true
-        io.write(word .. ' ')
+        local idx = data.getidx(dic, word)
+        table.insert(cwl, idx)
+        cws[idx] = true
+        io.write(dic.idx2word[idx] .. ' ')
     end
     print('')
     local template = { 

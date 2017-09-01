@@ -11,6 +11,12 @@ function Candidate:__init(opts)
 
     if opts.toks then
         self.toks = opts.toks
+    elseif opts.cws then 
+        local toks = opts.cws
+        for _, w in pairs(self.seq) do
+            toks[w] = nil
+        end
+        self.toks = toks
     else
         local toks = {}
         for i = 1, #self.seq do
