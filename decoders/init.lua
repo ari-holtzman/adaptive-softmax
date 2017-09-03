@@ -271,7 +271,8 @@ decoders.contextual_beam_search =
                                                 cws = shallowcopy(cws),
                                                 state = init_hidden,
                                                 next_token = first_idxs[i],
-                                                seq = seq
+                                                seq = seq,
+                                                r =  first_rewards[i]
                                           } )
                     table.insert(beam, cand)
                 end
