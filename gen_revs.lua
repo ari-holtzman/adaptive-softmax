@@ -71,9 +71,11 @@ while line ~= nil do
     local cws, cwl = {}, {}
     for word in line:gmatch("[^ ]+") do
         local idx = data.getidx(dic, word)
-        table.insert(cwl, idx)
-        cws[idx] = true
-        io.write(dic.idx2word[idx] .. ' ')
+        if idx ~= 2 then 
+            table.insert(cwl, idx)
+            cws[idx] = true
+            io.write(dic.idx2word[idx] .. ' ')
+        end
     end
     print('')
     local template = { 
@@ -91,7 +93,8 @@ while line ~= nil do
                                               config.g,
                                               config.maxsteps,
                                               cws,
-                                              config.cr)
+                                              config.cr,
+                                              3)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end

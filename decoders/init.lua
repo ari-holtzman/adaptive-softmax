@@ -225,6 +225,7 @@ decoders.beam_fill =
         
         return best
     end
+
 decoders.contextual_beam_search =
     function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr, ll)
         local cwl = {}
@@ -328,25 +329,18 @@ decoders.contextual_beam_search =
                     local cur_r, n, w = tok_rewards[i], tok_idxs[i][1], tok_idxs[i][2]
                     local cand = beam[n]
                     local rep = false
-                    if ll > 0 then
-                      for pos = 1, width - (ll*2-1) do
-                        local cur_rep =  true
-                        for off = 0, ll-2 do
-                          cur_rep = cur_rep and (cand.seq[pos+off] == cand.seq[#cand.seq-ll+off+1])
+                    if ll > 0  and #cand.seq >= ll  then
+                        for pos = 1, #cand.seq - ll + 1 do
+                          local cur_rep =  true
+                          for off = 0, ll-2 do
+                            cur_rep = cur_rep and (cand.seq[pos+off] == cand.seq[#cand.seq-ll+off+2])
+                          end
+                          cur_rep = cur_rep and (cand.seq[pos+ll-1] == w)
+                          rep = rep or cur_rep
+                          if rep then break end
                         end
-                        cur_rep = cure_rep and (cand.seq[pos+ll-1] == w)
-                        rep = rep or cur_rep
-                        if rep then break end
-                      end
                     end
-                    if #cand.seq >= 6 then
-                        local len = #cand.seq
-                        rep = true
-                        rep = rep and (w == cand.seq[len-2])
-                        rep = rep and (cand.seq[len] == cand.seq[len-3])
-                        rep = rep and (cand.seq[len-1] == cand.seq[len-4])
-                    end
-                    if not rep then
+                     if not rep then
                         local nu_seq = shallowcopy(cand.seq)
                         table.insert(nu_seq, w)
                         local nu_r = cur_r 
