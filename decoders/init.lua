@@ -436,7 +436,18 @@ decoders.template_beam_search =
             local base_probs = torch.CudaTensor(width):zero()
             local input = torch.CudaTensor(1, width)
             while (not best) or (best.p < beam[1].p) do
-
+                if best then
+                    for i = 1, #best.seq do
+                        io.write(dic.idx2word[best.seq[i]] .. ' ')
+                    end
+                    print('')
+                else
+                    for i = 1, #beam[1].seq do
+                        io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
+                    end
+                    print('')
+                end
+                
                 -- prepare state
                 local cur_state = { 
                                     torch.CudaTensor(1, width, state_vec_len),
