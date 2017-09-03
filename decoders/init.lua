@@ -307,7 +307,7 @@ decoders.contextual_beam_search =
                     cur_state[1][1][i] = beam[i].state[1]
                     cur_state[2][1][i] = beam[i].state[2]
                     input[1][i] = beam[i].next_token
-                    base_rewards[i] = beam[i].p
+                    base_rewards[i] = beam[i].r
                     table.insert(cwl, beam[i].toks)
                 end
 
