@@ -226,7 +226,7 @@ decoders.beam_fill =
         return best
     end
 decoders.contextual_beam_search =
-    function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr)
+    function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr, ll)
         local cwl = {}
         for w, _ in pairs(cws) do
             table.insert(cwl, w)
@@ -328,6 +328,17 @@ decoders.contextual_beam_search =
                     local cur_r, n, w = tok_rewards[i], tok_idxs[i][1], tok_idxs[i][2]
                     local cand = beam[n]
                     local rep = false
+                    if ll > 0 then
+                      for pos = 1, width - (ll*2-1) do
+                        local cur_rep =  true
+                        for off = 0, ll-2 do
+                          cur_rep = cur_rep and (cand.seq[pos+off] == cand.seq[#cand.seq-ll+off+1])
+                        end
+                        cur_rep = cure_rep and (cand.seq[pos+ll-1] == w)
+                        rep = rep or cur_rep
+                        if rep then break end
+                      end
+                    end
                     if #cand.seq >= 6 then
                         local len = #cand.seq
                         rep = true
