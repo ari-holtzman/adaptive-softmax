@@ -344,7 +344,7 @@ decoders.contextual_beam_search =
                         local nu_seq = shallowcopy(cand.seq)
                         table.insert(nu_seq, w)
                         local nu_r = cur_r 
-                        nu_r = nu_r + r * ((1 - math.pow(g, #nu_seq)) / (1 - g))
+                        nu_r = nu_r + (r * math.pow(g, #nu_seq))
                         local nu_state = { 
                                            nu_hidden[1][1][n]:clone(),
                                            nu_hidden[2][1][n]:clone()
