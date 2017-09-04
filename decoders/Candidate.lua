@@ -9,22 +9,6 @@ function Candidate:__init(opts)
     self.seq = opts and opts.seq
     self.seq = self.seq or {}
 
-    if opts.toks then
-        self.toks = opts.toks
-    elseif opts.cws then 
-        local toks = opts.cws
-        for _, w in pairs(self.seq) do
-            toks[w] = nil
-        end
-        self.toks = toks
-    else
-        local toks = {}
-        for i = 1, #self.seq do
-            toks[self.seq[i]] = true
-        end
-        self.toks = toks
-    end
-
     self.cws = opts.cws or {}
 
     self.state = opts and opts.state
