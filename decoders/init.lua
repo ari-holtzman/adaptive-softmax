@@ -321,6 +321,7 @@ decoders.contextual_beam_search =
                 local i = 0
                 while #nu_beam < width do
                     i = i + 1
+                    print(tok_rewards:size())
                     local cur_r, n, w = tok_rewards[i], tok_idxs[i][1], tok_idxs[i][2]
                     local cand = beam[n]
                     local rep = false
