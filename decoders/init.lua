@@ -263,9 +263,11 @@ decoders.contextual_beam_search =
                 if w ~= term then
                     local seq = shallowcopy(init_seq)
                     table.insert(seq, w)
+                    print(cws)
                     local nu_cws = shallowcopy(cws)
                     nu_cws[w] = nil
                     print(nu_cws)
+                    print('**************')
                     local cand = Candidate( {
                                                 cws = nu_cws,
                                                 state = init_hidden,
