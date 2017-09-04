@@ -243,7 +243,6 @@ decoders.contextual_beam_search =
             local inter = model:forward({state, proc_prefix})
 
             local base_rewards = torch.CudaTensor(1):zero()
-            print(cr)
             local first_rewards, first_idxs = dec:topknextfunky(inter, 
                                                          width+1,
                                                          proc_prefix,
@@ -252,7 +251,7 @@ decoders.contextual_beam_search =
                                                          cr)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
-            for i = 1, first_idxs:size(1) do print(dic.idx2word[first_idxs[i]]) end
+            for i = 1, first_idxs:size(1) do print(first_rewards[i]) end
             local raw_hidden = rnn:getLastHidden()
             local suffix = template[c+1]
             local term = suffix[1]
