@@ -227,7 +227,7 @@ decoders.beam_fill =
     end
 
 decoders.contextual_beam_search =
-    function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr, ll)
+    function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr, ll, v)
         local cwl = {}
         for w, _ in pairs(cws) do
             table.insert(cwl, w)
@@ -287,17 +287,19 @@ decoders.contextual_beam_search =
             local steps = 0
             while steps < max_steps do
                 steps = steps + 1
-                --if best then
-                --    for i = 1, #best.seq do
-                --        io.write(dic.idx2word[best.seq[i]] .. ' ')
-                --    end
-                --    print('')
-                --else
-                --    for i = 1, #beam[1].seq do
-                --        io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
-                --    end
-                --    print('')
-                --end
+                if v > 0 then
+                    if best then
+                        for i = 1, #best.seq do
+                            io.write(dic.idx2word[best.seq[i]] .. ' ')
+                        end
+                        print('')
+                    else
+                        for i = 1, #beam[1].seq do
+                            io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
+                        end
+                        print('')
+                    end
+                end
 
                 -- prepare state
                 local cur_state = { 

@@ -24,6 +24,7 @@ cmd:option('-r',  0, 'reward per word')
 cmd:option('-g',  0.5, 'reward decay')
 cmd:option('-maxsteps', 100, 'reward per word')
 cmd:option('-cr',  0, 'reward per context word')
+cmd:option('-v',  0, 'verbosity')
 
 local config = cmd:parse(arg)
 
@@ -114,7 +115,8 @@ while line ~= nil do
                                               config.maxsteps,
                                               cws,
                                               config.cr,
-                                              5)
+                                              5,
+                                              config.v)
     io.write('pred: ')
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
