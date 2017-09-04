@@ -228,11 +228,6 @@ decoders.beam_fill =
 
 decoders.contextual_beam_search =
     function(model, rnn, dec, width, template, dic, r, g, max_steps, cws, cr, ll, v)
-        local cwl = {}
-        for w, _ in pairs(cws) do
-            table.insert(cwl, w)
-        end
-
         local prefix = template[1]
         local inter
         local init_len = template[1]:size(1)
@@ -248,7 +243,7 @@ decoders.contextual_beam_search =
                                                          width+1,
                                                          proc_prefix,
                                                          base_rewards,
-                                                         {cwl},
+                                                         {cws},
                                                          cr)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
@@ -268,8 +263,10 @@ decoders.contextual_beam_search =
                 if w ~= term then
                     local seq = shallowcopy(init_seq)
                     table.insert(seq, w)
+                    local nu_cws = shallowcopy(cws)
+                    cws[w] = nil
                     local cand = Candidate( {
-                                                cws = shallowcopy(cws),
+                                                cws = nu_cws,
                                                 state = init_hidden,
                                                 next_token = first_idxs[i],
                                                 seq = seq,
@@ -306,13 +303,13 @@ decoders.contextual_beam_search =
                                     torch.CudaTensor(1, width, state_vec_len),
                                     torch.CudaTensor(1, width, state_vec_len)
                                   }
-                local cwl = {}
+                local cwss = {}
                 for i = 1, width do
                     cur_state[1][1][i] = beam[i].state[1]
                     cur_state[2][1][i] = beam[i].state[2]
                     input[1][i] = beam[i].next_token
                     base_rewards[i] = beam[i].r
-                    table.insert(cwl, beam[i].toks)
+                    table.insert(cwss, beam[i].toks)
                 end
 
                 -- step RNN once
@@ -321,7 +318,7 @@ decoders.contextual_beam_search =
                                                         width*(width+1),
                                                         input,
                                                         base_rewards,
-                                                        cwl,
+                                                        cwss,
                                                         cr)
                 local nu_hidden = rnn:getLastHidden()[1]
 
@@ -353,6 +350,9 @@ decoders.contextual_beam_search =
                                            nu_hidden[1][1][n]:clone(),
                                            nu_hidden[2][1][n]:clone()
                                          }
+                        
+                        local nu_cws = shallowcopy(cws)
+                        cws[w] = nil
                         if w == term then
                             if best == nil or nu_r > best.r then
                                 for i = 2, suffix:size(1) do
@@ -360,7 +360,7 @@ decoders.contextual_beam_search =
                                 end
                                 best = Candidate( 
                                                   { 
-                                                    cws = shallowcopy(cws),
+                                                    cws = nu_cws
                                                     r = nu_r, 
                                                     seq = nu_seq,
                                                     state = nu_state
@@ -374,7 +374,7 @@ decoders.contextual_beam_search =
                                                             next_token = w,
                                                             seq = nu_seq,
                                                             state = nu_state,
-                                                            cws = shallowcopy(cws),
+                                                            cws = nu_cws
                                                         }
                                                      )
                             table.insert(nu_beam, nu_cand)
