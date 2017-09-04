@@ -25,6 +25,8 @@ function Candidate:__init(opts)
         self.toks = toks
     end
 
+    self.cws = opts.cws or {}
+
     self.state = opts and opts.state
 
     self.next_token = opts and opts.next_token
