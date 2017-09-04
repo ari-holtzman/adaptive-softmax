@@ -264,7 +264,7 @@ decoders.contextual_beam_search =
                     local seq = shallowcopy(init_seq)
                     table.insert(seq, w)
                     local nu_cws = shallowcopy(cws)
-                    cws[w] = nil
+                    nu_cws[w] = nil
                     local cand = Candidate( {
                                                 cws = nu_cws,
                                                 state = init_hidden,
@@ -346,8 +346,8 @@ decoders.contextual_beam_search =
                                            nu_hidden[2][1][n]:clone()
                                          }
                         
-                        local nu_cws = shallowcopy(cws)
-                        cws[w] = nil
+                        local nu_cws = shallowcopy(cand.cws)
+                        nu_cws[w] = nil
                         if w == term then
                             if best == nil or nu_r > best.r then
                                 for i = 2, suffix:size(1) do
