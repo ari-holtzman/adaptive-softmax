@@ -309,7 +309,7 @@ decoders.contextual_beam_search =
                 -- step RNN once
                 local inter = model:forward({{cur_state}, input})
                 local tok_rewards, tok_idxs = dec:topknextfunky(inter,
-                                                        width*(width+1),
+                                                        math.max(width*(width+1), width*2+1),
                                                         input,
                                                         base_rewards,
                                                         cwss,
