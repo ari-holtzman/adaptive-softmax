@@ -360,7 +360,7 @@ decoders.contextual_beam_search =
                                 end
                                 best = Candidate( 
                                                   { 
-                                                    cws = nu_cws
+                                                    cws = nu_cws,
                                                     r = nu_r, 
                                                     seq = nu_seq,
                                                     state = nu_state
