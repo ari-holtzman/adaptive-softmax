@@ -272,6 +272,7 @@ decoders.contextual_beam_search =
                                                 seq = seq,
                                                 r =  first_rewards[i]
                                           } )
+                    print(cand.cws)
                     table.insert(beam, cand)
                 end
                 i = i + 1
