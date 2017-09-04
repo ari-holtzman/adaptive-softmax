@@ -251,6 +251,8 @@ decoders.contextual_beam_search =
                                                          cr)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
+            print(first_idxs)
+            for i = 1, first_idxs:size(1) do print(dic.idx2word[first_idxs]) end
             local raw_hidden = rnn:getLastHidden()
             local suffix = template[c+1]
             local term = suffix[1]

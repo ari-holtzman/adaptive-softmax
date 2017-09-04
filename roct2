@@ -1,0 +1,10 @@
+init: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> 	
+cont: dan parents overweight 	
+  3
+  2
+  1
+ 10
+  7
+ 13
+[torch.DoubleTensor of size 6]
+
