@@ -265,6 +265,7 @@ decoders.contextual_beam_search =
                     table.insert(seq, w)
                     local nu_cws = shallowcopy(cws)
                     nu_cws[w] = nil
+                    print(nu_cws)
                     local cand = Candidate( {
                                                 cws = nu_cws,
                                                 state = init_hidden,
