@@ -272,7 +272,6 @@ decoders.contextual_beam_search =
                                                 seq = seq,
                                                 r =  first_rewards[i]
                                           } )
-                    print(cand.cws)
                     table.insert(beam, cand)
                 end
                 i = i + 1
@@ -306,7 +305,6 @@ decoders.contextual_beam_search =
                     base_rewards[i] = beam[i].r
                     table.insert(cwss, beam[i].cws)
                 end
-                print(cwss[1])
 
                 -- step RNN once
                 local inter = model:forward({{cur_state}, input})
