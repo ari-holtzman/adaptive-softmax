@@ -249,10 +249,8 @@ function AdaptiveSoftMax:topknextfunky(input, k, seqs, base_probs, cwl, cr)
     end
     local base_mask = seq_probs:view(n, 1):repeatTensor(1, v):cuda()
     local final_word_probs = all_word_probs[l]:add(base_mask)
-    print(cwl)
     for r, row in pairs(cwl) do
         for _, c in pairs(row) do
-            print(r .. ' ' .. c)
             final_word_probs[r][c] = final_word_probs[r][c] + cr
         end
     end

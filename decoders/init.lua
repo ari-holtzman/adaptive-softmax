@@ -235,6 +235,7 @@ decoders.contextual_beam_search =
 
         local prefix = template[1]
         local inter
+        local init_len = template[1]:size(1)
         for c = 1, (#template-1) do
             -- prepare beam
             local state = rnn:initializeHidden(1)
@@ -251,7 +252,6 @@ decoders.contextual_beam_search =
                                                          cr)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
-            for i = 1, first_idxs:size(1) do print(first_rewards[i]) end
             local raw_hidden = rnn:getLastHidden()
             local suffix = template[c+1]
             local term = suffix[1]
@@ -346,7 +346,7 @@ decoders.contextual_beam_search =
                         local nu_seq = shallowcopy(cand.seq)
                         table.insert(nu_seq, w)
                         local nu_r = cur_r 
-                        nu_r = nu_r + (r * math.pow(g, #nu_seq))
+                        nu_r = nu_r + (r * math.pow(g, #nu_seq-init_len))
                         local nu_state = { 
                                            nu_hidden[1][1][n]:clone(),
                                            nu_hidden[2][1][n]:clone()
