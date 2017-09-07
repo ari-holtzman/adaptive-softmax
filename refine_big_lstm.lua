@@ -27,7 +27,7 @@ cmd:option('-dicpath', '', 'path to dictionary file')
 
 cmd:option('-lr',            0.1,  'Learning rate')
 cmd:option('-epsilon',       1e-5, 'Epsilon for Adagrad')
-cmd:option('-dropout',      dropout, 'dropout')
+cmd:option('-dropout',      0.5, 'dropout')
 cmd:option('-maxepoch',      10,   'Number of epochs')
 cmd:option('-bptt',          20,   'Number of backprop through time steps')
 cmd:option('-clip',          0.25, 'Threshold for gradient clipping')
