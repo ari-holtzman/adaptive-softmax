@@ -195,7 +195,7 @@ function engine.hooks.onBackward(state)
       end
    end
 
-   local gradinput = model.gradInput[2]:view(bptt * bsz, config.isz)
+   local gradinput = model.gradInput[2]:view(bptt * bsz, orig_config.isz)
    local idx       = state.inputlut:view(bptt * bsz)
    local variance  = state.optim.lutVariance
    variance:indexAdd(1, idx, torch.pow(gradinput, 2):mean(2))
