@@ -1,10 +1,86 @@
 init: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> 	
 cont: dan parents overweight 	
-  3
-  2
-  1
- 10
-  7
- 13
-[torch.DoubleTensor of size 6]
-
+pred: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> dan asked . </s> 	
+---------------------------------	
+init: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> 	
+cont: sneak carrie bike 	
+pred: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> carrie 's eyes widened . </s> 	
+---------------------------------	
+init: </s> morgan enjoyed long walks on the beach . </s> she and her boyfriend decided to go for a long walk . </s> after walking for over a mile , something happened . </s> morgan decided to propose to her boyfriend . </s> 	
+cont: long boyfriend morgan 	
+pred: </s> morgan enjoyed long walks on the beach . </s> she and her boyfriend decided to go for a long walk . </s> after walking for over a mile , something happened . </s> morgan decided to propose to her boyfriend . </s> long time no see . </s> 	
+---------------------------------	
+init: </s> jane was working at a diner . </s> suddenly , a customer barged up to the counter . </s> he began yelling about how long his food was taking . </s> jane did n't know how to react . </s> 	
+cont: react barged jane 	
+pred: </s> jane was working at a diner . </s> suddenly , a customer barged up to the counter . </s> he began yelling about how long his food was taking . </s> jane did n't know how to react . </s> jane 's eyes widened . </s> 	
+---------------------------------	
+init: </s> i was talking to my crush today . </s> she continued to complain about guys flirting with her . </s> i decided to agree with what she says and listened to her patiently . </s> after i got home , i got a text from her . </s> 	
+cont: complain patiently flirting 	
+pred: </s> i was talking to my crush today . </s> she continued to complain about guys flirting with her . </s> i decided to agree with what she says and listened to her patiently . </s> after i got home , i got a text from her . </s> flirting with him . </s> 	
+---------------------------------	
+init: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> 	
+cont: beer he frank 	
+pred: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> he looked at me . </s> 	
+---------------------------------	
+init: </s> dave was in the bahamas on vacation . </s> he decided to go snorkeling on his second day . </s> while snorkeling , he saw a cave up ahead . </s> he went into the cave , and he was terrified when he found a shark ! </s> 	
+cont: bahamas cave snorkeling 	
+pred: </s> dave was in the bahamas on vacation . </s> he decided to go snorkeling on his second day . </s> while snorkeling , he saw a cave up ahead . </s> he went into the cave , and he was terrified when he found a shark ! </s> cave mould . '' </s> 	
+---------------------------------	
+init: </s> sunny enjoyed going to the beach . </s> as she stepped out of her car , she realized she forgot something . </s> it was quite sunny and she forgot her sunglasses . </s> sunny got back into her car and heading towards the mall . </s> 	
+cont: sunglasses forgot sunny 	
+pred: </s> sunny enjoyed going to the beach . </s> as she stepped out of her car , she realized she forgot something . </s> it was quite sunny and she forgot her sunglasses . </s> sunny got back into her car and heading towards the mall . </s> forgot about it . '' </s> 	
+---------------------------------	
+init: </s> sally was happy when her widowed mom found a new man . </s> she discovered her siblings did n't feel the same . </s> sally flew to visit her mom and her mom 's new husband . </s> although her mom was obviously in love , he was nothing like her dad . </s> 	
+cont: sally her mom 	
+pred: </s> sally was happy when her widowed mom found a new man . </s> she discovered her siblings did n't feel the same . </s> sally flew to visit her mom and her mom 's new husband . </s> although her mom was obviously in love , he was nothing like her dad . </s> her eyes were closed . </s> 	
+---------------------------------	
+init: </s> dan hit his golf ball and watched it go . </s> the ball bounced on the grass and into the sand trap . </s> dan pretended that his ball actually landed on the green . </s> his friends were not paying attention so they believed him . </s> 	
+cont: bounced dan ball 	
+pred: </s> dan hit his golf ball and watched it go . </s> the ball bounced on the grass and into the sand trap . </s> dan pretended that his ball actually landed on the green . </s> his friends were not paying attention so they believed him . </s> dan asked . </s> 	
+---------------------------------	
+init: </s> josh had a parrot that talked . </s> he brought his parrot to school . </s> during show and tell , josh 's parrot said a bad word . </s> the teacher told joshua not to bring his bird again . </s> 	
+cont: joshua josh parrot 	
+pred: </s> josh had a parrot that talked . </s> he brought his parrot to school . </s> during show and tell , josh 's parrot said a bad word . </s> the teacher told joshua not to bring his bird again . </s> josh looked at me . </s> 	
+---------------------------------	
+init: </s> hal was walking his dog one morning . </s> a cat ran across their path . </s> hal 's dog strained so hard , the leash broke ! </s> he chased the cat for several minutes . </s> 	
+cont: strained cat hal 	
+pred: </s> hal was walking his dog one morning . </s> a cat ran across their path . </s> hal 's dog strained so hard , the leash broke ! </s> he chased the cat for several minutes . </s> cat and mouse . '' </s> 	
+---------------------------------	
+init: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> 	
+cont: promising brenda maxwell 	
+pred: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> brenda 's eyes widened . </s> 	
+---------------------------------	
+init: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> 	
+cont: attempt leftovers yanice 	
+pred: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> leftovers . '' </s> 	
+---------------------------------	
+init: </s> i saw my friend joe sitting in lobby today . </s> i kept him company , as he is a lonely old man . </s> he told me he had just listened to beethoven 's ninth . </s> i talked to him for an hour . </s> 	
+cont: lobby ninth beethoven 	
+pred: </s> i saw my friend joe sitting in lobby today . </s> i kept him company , as he is a lonely old man . </s> he told me he had just listened to beethoven 's ninth . </s> i talked to him for an hour . </s> ninth grade . '' </s> 	
+---------------------------------	
+init: </s> twas the night after the first day of junior high . </s> amy and her friend beth were on the phone . </s> they had a lot to catch up on . </s> amy listened patiently as beth told her about her day . </s> 	
+cont: twas amy beth 	
+pred: </s> twas the night after the first day of junior high . </s> amy and her friend beth were on the phone . </s> they had a lot to catch up on . </s> amy listened patiently as beth told her about her day . </s> beth 's eyes widened . </s> 	
+---------------------------------	
+init: </s> i knew of a young man who won the lottery . </s> he used to ride lawn mowers . </s> after he won , he went on to using drugs . </s> he blew a lot of money . </s> 	
+cont: drugs won mowers 	
+pred: </s> i knew of a young man who won the lottery . </s> he used to ride lawn mowers . </s> after he won , he went on to using drugs . </s> he blew a lot of money . </s> drugs and alcohol . </s> 	
+---------------------------------	
+init: </s> a die hard shopper was waiting in the long line outside . </s> it was miserably cold . </s> the shopper saw a homeless man shivering in the alleyway . </s> he gave up his place in the line and brought a gift back from his car . </s> 	
+cont: alleyway line shopper 	
+pred: </s> a die hard shopper was waiting in the long line outside . </s> it was miserably cold . </s> the shopper saw a homeless man shivering in the alleyway . </s> he gave up his place in the line and brought a gift back from his car . </s> line up the phone . </s> 	
+---------------------------------	
+init: </s> jeff invited his friends over to play board games on saturday night . </s> they arrived at his house early that evening . </s> the six of them sat around a big table . </s> they took turns deciding which game to play . </s> 	
+cont: board deciding play 	
+pred: </s> jeff invited his friends over to play board games on saturday night . </s> they arrived at his house early that evening . </s> the six of them sat around a big table . </s> they took turns deciding which game to play . </s> play it safe . '' </s> 	
+---------------------------------	
+init: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> 	
+cont: labored reclined porch 	
+pred: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> reclined on the bed . </s> 	
+---------------------------------	
+init: </s> jessica decided she wanted to go to the beach . </s> she invited all her friends to go along . </s> they had a great time , but covered in a lot of sticky sand . </s> they searched for a shower for what felt like ages . </s> 	
+cont: jessica sticky ages 	
+pred: </s> jessica decided she wanted to go to the beach . </s> she invited all her friends to go along . </s> they had a great time , but covered in a lot of sticky sand . </s> they searched for a shower for what felt like ages . </s> jessica looked at him . </s> 	
+---------------------------------	
+init: </s> dan wanted a pet for christmas . </s> he told his dad . </s> his dad listened , but did n't say anything . </s> so on christmas morning , and got a wonderful surprise . </s> 	
+cont: listened dad christmas 	

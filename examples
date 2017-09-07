@@ -1,0 +1,478 @@
+init: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> 	
+cont: make his well change doctors understood unhealthy dan parents overweight 	
+pred: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> he understood his parents well enough to know that they would make him change his mind . </s> 	
+---------------------------------	
+init: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> 	
+cont: learned sister ride wall crashed hill rides sneak carrie bike 	
+pred: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> she 'd learned to ride a bike and sneak rides with her sister . </s> 	
+---------------------------------	
+init: </s> morgan enjoyed long walks on the beach . </s> she and her boyfriend decided to go for a long walk . </s> after walking for over a mile , something happened . </s> morgan decided to propose to her boyfriend . </s> 	
+cont: enjoyed beach decided happened walks mile propose long boyfriend morgan 	
+pred: </s> morgan enjoyed long walks on the beach . </s> she and her boyfriend decided to go for a long walk . </s> after walking for over a mile , something happened . </s> morgan decided to propose to her boyfriend . </s> `` how long do you think it 's going to take for us to get to the beach ? '' </s> 	
+---------------------------------	
+init: </s> jane was working at a diner . </s> suddenly , a customer barged up to the counter . </s> he began yelling about how long his food was taking . </s> jane did n't know how to react . </s> 	
+cont: working taking counter customer yelling diner how react barged jane 	
+pred: </s> jane was working at a diner . </s> suddenly , a customer barged up to the counter . </s> he began yelling about how long his food was taking . </s> jane did n't know how to react . </s> `` how long have you been working at the diner , taking care of a customer ? '' </s> 	
+---------------------------------	
+init: </s> i was talking to my crush today . </s> she continued to complain about guys flirting with her . </s> i decided to agree with what she says and listened to her patiently . </s> after i got home , i got a text from her . </s> 	
+cont: her listened crush says text guys agree complain patiently flirting 	
+pred: </s> i was talking to my crush today . </s> she continued to complain about guys flirting with her . </s> i decided to agree with what she says and listened to her patiently . </s> after i got home , i got a text from her . </s> `` i agree with her , '' he says , flirting with the guys on the dance floor . </s> 	
+---------------------------------	
+init: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> 	
+cont: date drive bit already drinking drunk asking beer he frank 	
+pred: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> he 'd already drunk a bit of beer and was drinking a glass of wine . </s> 	
+---------------------------------	
+init: </s> dave was in the bahamas on vacation . </s> he decided to go snorkeling on his second day . </s> while snorkeling , he saw a cave up ahead . </s> he went into the cave , and he was terrified when he found a shark ! </s> 	
+cont: vacation second dave terrified ahead shark he bahamas cave snorkeling 	
+pred: </s> dave was in the bahamas on vacation . </s> he decided to go snorkeling on his second day . </s> while snorkeling , he saw a cave up ahead . </s> he went into the cave , and he was terrified when he found a shark ! </s> he took a deep breath and let it out in a long , deep sigh . </s> 	
+---------------------------------	
+init: </s> sunny enjoyed going to the beach . </s> as she stepped out of her car , she realized she forgot something . </s> it was quite sunny and she forgot her sunglasses . </s> sunny got back into her car and heading towards the mall . </s> 	
+cont: towards her quite stepped heading she car sunglasses forgot sunny 	
+pred: </s> sunny enjoyed going to the beach . </s> as she stepped out of her car , she realized she forgot something . </s> it was quite sunny and she forgot her sunglasses . </s> sunny got back into her car and heading towards the mall . </s> she opened her car door and stepped out , heading towards the front door . </s> 	
+---------------------------------	
+init: </s> sally was happy when her widowed mom found a new man . </s> she discovered her siblings did n't feel the same . </s> sally flew to visit her mom and her mom 's new husband . </s> although her mom was obviously in love , he was nothing like her dad . </s> 	
+cont: discovered flew although new siblings obviously widowed sally her mom 	
+pred: </s> sally was happy when her widowed mom found a new man . </s> she discovered her siblings did n't feel the same . </s> sally flew to visit her mom and her mom 's new husband . </s> although her mom was obviously in love , he was nothing like her dad . </s> her mom flew back to new york , although she obviously did n't have any siblings . </s> 	
+---------------------------------	
+init: </s> dan hit his golf ball and watched it go . </s> the ball bounced on the grass and into the sand trap . </s> dan pretended that his ball actually landed on the green . </s> his friends were not paying attention so they believed him . </s> 	
+cont: green grass sand pretended believed golf trap bounced dan ball 	
+pred: </s> dan hit his golf ball and watched it go . </s> the ball bounced on the grass and into the sand trap . </s> dan pretended that his ball actually landed on the green . </s> his friends were not paying attention so they believed him . </s> a ball of green grass bounced off the sand and fell to the ground . </s> 	
+---------------------------------	
+init: </s> josh had a parrot that talked . </s> he brought his parrot to school . </s> during show and tell , josh 's parrot said a bad word . </s> the teacher told joshua not to bring his bird again . </s> 	
+cont: during show tell talked bring bird word joshua josh parrot 	
+pred: </s> josh had a parrot that talked . </s> he brought his parrot to school . </s> during show and tell , josh 's parrot said a bad word . </s> the teacher told joshua not to bring his bird again . </s> `` i talked to josh during the show , '' i tell him . </s> 	
+---------------------------------	
+init: </s> hal was walking his dog one morning . </s> a cat ran across their path . </s> hal 's dog strained so hard , the leash broke ! </s> he chased the cat for several minutes . </s> 	
+cont: walking minutes across chased path leash dog strained cat hal 	
+pred: </s> hal was walking his dog one morning . </s> a cat ran across their path . </s> hal 's dog strained so hard , the leash broke ! </s> he chased the cat for several minutes . </s> walking across the path , the dog strained to leash the cat as it chased after him . </s> 	
+---------------------------------	
+init: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> 	
+cont: talk break successful artist future he propose promising brenda maxwell 	
+pred: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> he did n't want to talk about the future , did n't want to break it . </s> 	
+---------------------------------	
+init: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> 	
+cont: lunch nothing eggs meat fridge mixed fried attempt leftovers yanice 	
+pred: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> there was nothing in the fridge except for leftovers mixed with eggs and fried meat . </s> 	
+---------------------------------	
+init: </s> i saw my friend joe sitting in lobby today . </s> i kept him company , as he is a lonely old man . </s> he told me he had just listened to beethoven 's ninth . </s> i talked to him for an hour . </s> 	
+cont: him company joe talked sitting listened lonely lobby ninth beethoven 	
+pred: </s> i saw my friend joe sitting in lobby today . </s> i kept him company , as he is a lonely old man . </s> he told me he had just listened to beethoven 's ninth . </s> i talked to him for an hour . </s> `` i talked to him last night , '' joe said , sitting on the edge of the bed . </s> 	
+---------------------------------	
+init: </s> twas the night after the first day of junior high . </s> amy and her friend beth were on the phone . </s> they had a lot to catch up on . </s> amy listened patiently as beth told her about her day . </s> 	
+cont: high day catch her listened patiently junior twas amy beth 	
+pred: </s> twas the night after the first day of junior high . </s> amy and her friend beth were on the phone . </s> they had a lot to catch up on . </s> amy listened patiently as beth told her about her day . </s> her first day of high school was to catch up with beth and amy , and they listened patiently . </s> 	
+---------------------------------	
+init: </s> i knew of a young man who won the lottery . </s> he used to ride lawn mowers . </s> after he won , he went on to using drugs . </s> he blew a lot of money . </s> 	
+cont: ride young using blew lawn he lottery drugs won mowers 	
+pred: </s> i knew of a young man who won the lottery . </s> he used to ride lawn mowers . </s> after he won , he went on to using drugs . </s> he blew a lot of money . </s> he 'd won the lottery , and now he was using it as a bargaining chip . </s> 	
+---------------------------------	
+init: </s> a die hard shopper was waiting in the long line outside . </s> it was miserably cold . </s> the shopper saw a homeless man shivering in the alleyway . </s> he gave up his place in the line and brought a gift back from his car . </s> 	
+cont: waiting in gift homeless die shivering miserably alleyway line shopper 	
+pred: </s> a die hard shopper was waiting in the long line outside . </s> it was miserably cold . </s> the shopper saw a homeless man shivering in the alleyway . </s> he gave up his place in the line and brought a gift back from his car . </s> waiting in line at the end of the alleyway was a man who looked like a homeless man . </s> 	
+---------------------------------	
+init: </s> jeff invited his friends over to play board games on saturday night . </s> they arrived at his house early that evening . </s> the six of them sat around a big table . </s> they took turns deciding which game to play . </s> 	
+cont: table which evening six saturday jeff turns board deciding play 	
+pred: </s> jeff invited his friends over to play board games on saturday night . </s> they arrived at his house early that evening . </s> the six of them sat around a big table . </s> they took turns deciding which game to play . </s> deciding which table to play on saturday evening , she turns her attention back to the board . </s> 	
+---------------------------------	
+init: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> 	
+cont: screen he back tools chuck material sipped labored reclined porch 	
+pred: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> he sat back in his chair and sipped his coffee , staring at the screen in front of him . </s> 	
+---------------------------------	
+init: </s> jessica decided she wanted to go to the beach . </s> she invited all her friends to go along . </s> they had a great time , but covered in a lot of sticky sand . </s> they searched for a shower for what felt like ages . </s> 	
+cont: beach along searched covered shower sand go jessica sticky ages 	
+pred: </s> jessica decided she wanted to go to the beach . </s> she invited all her friends to go along . </s> they had a great time , but covered in a lot of sticky sand . </s> they searched for a shower for what felt like ages . </s> we go along the beach , the sand covered in sticky patches of snow . </s> 	
+---------------------------------	
+init: </s> dan wanted a pet for christmas . </s> he told his dad . </s> his dad listened , but did n't say anything . </s> so on christmas morning , and got a wonderful surprise . </s> 	
+cont: morning anything surprise pet dan say wonderful listened dad christmas 	
+pred: </s> dan wanted a pet for christmas . </s> he told his dad . </s> his dad listened , but did n't say anything . </s> so on christmas morning , and got a wonderful surprise . </s> `` morning , dad , '' i say , trying to keep the surprise out of my voice . </s> 	
+---------------------------------	
+init: </s> kelly and her friends decided to have a hot dog contest . </s> the girls competed against each other . </s> they had to make the best tasting one . </s> when it was over , kelly won . </s> 	
+cont: dog won each hot girls against contest tasting competed kelly 	
+pred: </s> kelly and her friends decided to have a hot dog contest . </s> the girls competed against each other . </s> they had to make the best tasting one . </s> when it was over , kelly won . </s> each of the girls competed against the hot dog and won the contest . </s> 	
+---------------------------------	
+init: </s> dan was watching a youtube video . </s> his mom was in the kitchen , doing dishes . </s> suddenly , dan ran into the kitchen and started crying . </s> he had just seen a video of a man trampled by an elephant . </s> 	
+cont: watching seen crying dishes youtube elephant trampled kitchen dan video 	
+pred: </s> dan was watching a youtube video . </s> his mom was in the kitchen , doing dishes . </s> suddenly , dan ran into the kitchen and started crying . </s> he had just seen a video of a man trampled by an elephant . </s> `` i 've seen the video , '' he said , watching me closely . </s> 	
+---------------------------------	
+init: </s> jeff wanted to move out of his house . </s> he had no money to pay for a new one . </s> one day he bought a scratching ticket . </s> he won enough money for a down payment . </s> 	
+cont: won one he pay move ticket jeff payment scratching money 	
+pred: </s> jeff wanted to move out of his house . </s> he had no money to pay for a new one . </s> one day he bought a scratching ticket . </s> he won enough money for a down payment . </s> he was one of the first to move the money to pay for the ticket . </s> 	
+---------------------------------	
+init: </s> i was walking to school . </s> since i was n't looking at my feet , i stepped on a rock . </s> i landed on the ground in pain . </s> thankfully , a stranger rushed to pick me up . </s> 	
+cont: pick ground pain rushed landed feet rock thankfully stepped stranger 	
+pred: </s> i was walking to school . </s> since i was n't looking at my feet , i stepped on a rock . </s> i landed on the ground in pain . </s> thankfully , a stranger rushed to pick me up . </s> my feet landed on the ground , and pain rushed through me as i stepped on the rock . </s> 	
+---------------------------------	
+init: </s> lily drove into town for some errands . </s> while she was there , she bought a large iced coffee to go . </s> it was delicious and refreshing and she could n't wait to finish it . </s> she put it on her car roof while fishing for her keys . </s> 	
+cont: finish fishing keys roof lily she errands while iced refreshing 	
+pred: </s> lily drove into town for some errands . </s> while she was there , she bought a large iced coffee to go . </s> it was delicious and refreshing and she could n't wait to finish it . </s> she put it on her car roof while fishing for her keys . </s> while she waited for him to finish , she took a deep breath and let it out slowly . </s> 	
+---------------------------------	
+init: </s> todd was hungry . </s> he did not have anything to cook at his house . </s> he decided he need to go buy something to cook . </s> on the way to the store todd decided to make hamburgers . </s> 	
+cont: way something he anything decided hungry need hamburgers cook todd 	
+pred: </s> todd was hungry . </s> he did not have anything to cook at his house . </s> he decided he need to go buy something to cook . </s> on the way to the store todd decided to make hamburgers . </s> he did n't need anything else , but something about the way he said it made her feel hungry . </s> 	
+---------------------------------	
+init: </s> virgil brought home a bright blue recliner he had found online . </s> his wife thought it was hideous and clashed with the decor . </s> virgil bought some fabric and had it reupholstered . </s> his wife complained again , saying bright green still clashed . </s> 	
+cont: saying fabric wife hideous decor recliner reupholstered bright clashed virgil 	
+pred: </s> virgil brought home a bright blue recliner he had found online . </s> his wife thought it was hideous and clashed with the decor . </s> virgil bought some fabric and had it reupholstered . </s> his wife complained again , saying bright green still clashed . </s> `` are you saying you do n't want to be a wife ? '' </s> 	
+---------------------------------	
+init: </s> jenna was at the community pool with her family . </s> she thought she could go out to the deeper end by herself . </s> without telling anyone , she swam out farther , and lost her footing . </s> the lifeguard had to help her out of the water . </s> 	
+cont: her telling swam community jenna out lifeguard deeper farther footing 	
+pred: </s> jenna was at the community pool with her family . </s> she thought she could go out to the deeper end by herself . </s> without telling anyone , she swam out farther , and lost her footing . </s> the lifeguard had to help her out of the water . </s> out of the corner of her eye , she saw jenna move farther away , deeper into the shadows . </s> 	
+---------------------------------	
+init: </s> joan entered the confessional and kneeled . </s> she thought she was confessing to the old parish priest . </s> joan confessed she had fantasized about the young visiting priest . </s> joan felt relief as she left the confessional . </s> 	
+cont: relief she confessed fantasized kneeled parish confessing priest confessional joan 	
+pred: </s> joan entered the confessional and kneeled . </s> she thought she was confessing to the old parish priest . </s> joan confessed she had fantasized about the young visiting priest . </s> joan felt relief as she left the confessional . </s> she took a deep breath and let it out slowly , letting the relief wash over her . </s> 	
+---------------------------------	
+init: </s> homer decided to go watch a movie . </s> but when he entered the movie theater , there was no where to sit . </s> he found one spot by a bunch of kids . </s> and during the movie , they made lots of noise . </s> 	
+cont: watch lots entered noise spot sit bunch theater homer movie 	
+pred: </s> homer decided to go watch a movie . </s> but when he entered the movie theater , there was no where to sit . </s> he found one spot by a bunch of kids . </s> and during the movie , they made lots of noise . </s> we entered the movie theater and found a spot to sit and watch a bunch of movies . </s> 	
+---------------------------------	
+init: </s> chip loved dip . </s> at one party , he put his chip into the dip and double dipped . </s> skip saw chip double dip . </s> skip had to flip at seeing the double dip . </s> 	
+cont: put party at seeing flip dipped skip double chip dip 	
+pred: </s> chip loved dip . </s> at one party , he put his chip into the dip and double dipped . </s> skip saw chip double dip . </s> skip had to flip at seeing the double dip . </s> he put his hand at the small of my back and guided me toward the double doors . </s> 	
+---------------------------------	
+init: </s> anna wanted to invite her crush peter to the sadie hawkins dance . </s> but peter was very cute and popular . </s> anna feared her was far out of her league . </s> she summoned her courage and asked him , expecting a rejection . </s> 	
+cont: feared league invite her sadie rejection summoned hawkins anna peter 	
+pred: </s> anna wanted to invite her crush peter to the sadie hawkins dance . </s> but peter was very cute and popular . </s> anna feared her was far out of her league . </s> she summoned her courage and asked him , expecting a rejection . </s> her heart was beating so fast , she feared she would n't be able to hear it . </s> 	
+---------------------------------	
+init: </s> gina had been being mean to the new boy in her class . </s> then a bully began picking on gina . </s> she now knew how the boy felt . </s> gina realized she should stop being mean . </s> 	
+cont: class knew stop should picking bully being boy mean gina 	
+pred: </s> gina had been being mean to the new boy in her class . </s> then a bully began picking on gina . </s> she now knew how the boy felt . </s> gina realized she should stop being mean . </s> i knew i should stop being such a good boy , but i did n't mean it . </s> 	
+---------------------------------	
+init: </s> jerry was making toast . </s> he set it to medium . </s> when the toast came out it was completely burnt . </s> he tried other settings with no better results . </s> 	
+cont: better set making completely jerry results burnt medium settings toast 	
+pred: </s> jerry was making toast . </s> he set it to medium . </s> when the toast came out it was completely burnt . </s> he tried other settings with no better results . </s> `` you 're making me feel better , '' he said as he set her on her feet . </s> 	
+---------------------------------	
+init: </s> last week i accidentally my account . </s> a restaurant charged me too much by mistake . </s> afterward i made five more purchases . </s> i had hundreds of dollars in overdraft fees . </s> 	
+cont: accidentally mistake account charged afterward hundreds purchases fees overdraft 	
+pred: </s> last week i accidentally my account . </s> a restaurant charged me too much by mistake . </s> afterward i made five more purchases . </s> i had hundreds of dollars in overdraft fees . </s> `` i do n't know what you 're talking about , '' he said . </s> 	
+---------------------------------	
+init: </s> frank was laughing so hard he started crying . </s> his dog fell into the trash and could n't get out . </s> he took a video of it and posted it online . </s> after a week frank had over 10000 views . </s> 	
+cont: dog online video crying trash posted laughing views 10000 frank 	
+pred: </s> frank was laughing so hard he started crying . </s> his dog fell into the trash and could n't get out . </s> he took a video of it and posted it online . </s> after a week frank had over 10000 views . </s> she was crying and laughing so hard that tears were streaming down her face . </s> 	
+---------------------------------	
+init: </s> ty had been deaf all her life , but now she was hoping to hear . </s> her doctor had offered her a new kind of super-powered hearing aid . </s> she had it implanted and then waited eagerly for her first sound . </s> and she heard hundreds , voices and music and more ! </s> 	
+cont: hearing eagerly hundreds aid her deaf voices ty powered implanted 	
+pred: </s> ty had been deaf all her life , but now she was hoping to hear . </s> her doctor had offered her a new kind of super-powered hearing aid . </s> she had it implanted and then waited eagerly for her first sound . </s> and she heard hundreds , voices and music and more ! </s> hearing voices in her head , she said , `` i do n't want to talk about it . '' </s> 	
+---------------------------------	
+init: </s> bob walked into the ship elevator and heard a voice on the speaker . </s> he told his wife the voice sounded the same as his audio book . </s> they were surprised to hear the voice in the hallway to their cabin . </s> the voice could still be in their cabin , so they called the steward . </s> 	
+cont: sounded ship their hallway elevator speaker audio steward cabin voice 	
+pred: </s> bob walked into the ship elevator and heard a voice on the speaker . </s> he told his wife the voice sounded the same as his audio book . </s> they were surprised to hear the voice in the hallway to their cabin . </s> the voice could still be in their cabin , so they called the steward . </s> his voice sounded like it was coming from the speaker in the hallway . </s> 	
+---------------------------------	
+init: </s> john is sleepy . </s> he starts a pot of coffee . </s> john puts cream and sugar in his cup and thermos . </s> he then adds coffee to both . </s> 	
+cont: cup pot sugar starts puts sleepy john thermos adds coffee 	
+pred: </s> john is sleepy . </s> he starts a pot of coffee . </s> john puts cream and sugar in his cup and thermos . </s> he then adds coffee to both . </s> she puts the coffee cup down and adds sugar to the pot , then starts to eat . </s> 	
+---------------------------------	
+init: </s> susan was excited to plan her first egg hunt in the south . </s> she found it fun to hide the candy filled eggs in green grass . </s> the sun was high in the sky when the egg hunt started . </s> soon , kids were opening eggs and bursting into tears . </s> 	
+cont: sky hide opening susan tears south bursting eggs egg hunt 	
+pred: </s> susan was excited to plan her first egg hunt in the south . </s> she found it fun to hide the candy filled eggs in green grass . </s> the sun was high in the sky when the egg hunt started . </s> soon , kids were opening eggs and bursting into tears . </s> i could n't hide the tears that were bursting out of my eyes as i stared at the sky . </s> 	
+---------------------------------	
+init: </s> bob met ann and they started dating . </s> they got along very well . </s> but bob was lutheran and ann was catholic . </s> ann 's mom disapproved of bob 's religion . </s> 	
+cont: met they along dating religion catholic disapproved lutheran bob ann 	
+pred: </s> bob met ann and they started dating . </s> they got along very well . </s> but bob was lutheran and ann was catholic . </s> ann 's mom disapproved of bob 's religion . </s> they 'd met along the way , and they 'd been dating for a long time . </s> 	
+---------------------------------	
+init: </s> jen 's in laws frustrated her to no end . </s> they all went out to have lunch . </s> at lunch , the in laws made it a point to ask jen about her weight . </s> jen told them that she had gained a few pounds in the last two weeks . </s> 	
+cont: in ask weight frustrated point pounds gained lunch laws jen 	
+pred: </s> jen 's in laws frustrated her to no end . </s> they all went out to have lunch . </s> at lunch , the in laws made it a point to ask jen about her weight . </s> jen told them that she had gained a few pounds in the last two weeks . </s> `` in point of fact , i 'm not going to ask you to lunch with me . '' </s> 	
+---------------------------------	
+init: </s> the woodworker was not satisfied with the cuts from a bit . </s> he took the bit from the machine and looked at it . </s> the bit had been worn away by a lot of use . </s> he took it to a sharpener and began to grind it . </s> 	
+cont: from machine took satisfied worn cuts grind sharpener woodworker bit 	
+pred: </s> the woodworker was not satisfied with the cuts from a bit . </s> he took the bit from the machine and looked at it . </s> the bit had been worn away by a lot of use . </s> he took it to a sharpener and began to grind it . </s> i took it from him and bit the inside of my cheek to keep it from trembling . </s> 	
+---------------------------------	
+init: </s> i came out of my class and walked to my locker . </s> i pressed my foot on a broken tile and fell on the ground . </s> at first , no one was willing to help me up . </s> however , one of the teachers around the area helped me get up . </s> 	
+cont: broken area foot teachers me locker pressed willing tile my 	
+pred: </s> i came out of my class and walked to my locker . </s> i pressed my foot on a broken tile and fell on the ground . </s> at first , no one was willing to help me up . </s> however , one of the teachers around the area helped me get up . </s> my foot pressed down on the broken tile , willing me to do the same . </s> 	
+---------------------------------	
+init: </s> timmy was always obsessed with airplanes . </s> his dream was to be a pilot . </s> for his 16th birthday his parents surprised him with flying lessons . </s> he loved every minute of it . </s> 	
+cont: his dream lessons minute flying timmy pilot obsessed airplanes 16th 	
+pred: </s> timmy was always obsessed with airplanes . </s> his dream was to be a pilot . </s> for his 16th birthday his parents surprised him with flying lessons . </s> he loved every minute of it . </s> the minute his head hit the pillow , he was flying through the air like a dream . </s> 	
+---------------------------------	
+init: </s> last night my wife and i went to the spa . </s> we both got relaxing massages . </s> we had facials . </s> we soaked in warm water and stayed in the sauna . </s> 	
+cont: both stayed warm soaked relaxing spa massages sauna facials we 	
+pred: </s> last night my wife and i went to the spa . </s> we both got relaxing massages . </s> we had facials . </s> we soaked in warm water and stayed in the sauna . </s> we both stayed warm , relaxing into each other 's arms and enjoying each other 's company . </s> 	
+---------------------------------	
+init: </s> greg decided to join marching band . </s> he practiced for weeks to make sure he made it past auditions . </s> he even got his own instrument . </s> the day of tryouts came and all his work was for nothing . </s> 	
+cont: nothing practiced band past join greg tryouts instrument auditions marching 	
+pred: </s> greg decided to join marching band . </s> he practiced for weeks to make sure he made it past auditions . </s> he even got his own instrument . </s> the day of tryouts came and all his work was for nothing . </s> there was nothing i wanted more than to join the band , but i could n't get past that . </s> 	
+---------------------------------	
+init: </s> lisa has a beautiful sapphire ring . </s> she always takes it off to wash her hands . </s> one afternoon , she noticed it was missing from her finger ! </s> lisa searched everywhere she had been that day . </s> 	
+cont: afternoon searched missing hands ring takes wash finger sapphire lisa 	
+pred: </s> lisa has a beautiful sapphire ring . </s> she always takes it off to wash her hands . </s> one afternoon , she noticed it was missing from her finger ! </s> lisa searched everywhere she had been that day . </s> he takes my hands in his and kisses the ring on my finger without missing a beat . </s> 	
+---------------------------------	
+init: </s> it was usually hot were kim lived . </s> but everyone was surprised when it was cold one day . </s> kim decided to drink coffee and eat oatmeal . </s> so she was glad that the weather was cold . </s> 	
+cont: lived glad coffee surprised drink weather usually oatmeal cold kim 	
+pred: </s> it was usually hot were kim lived . </s> but everyone was surprised when it was cold one day . </s> kim decided to drink coffee and eat oatmeal . </s> so she was glad that the weather was cold . </s> `` i do n't usually drink coffee in cold weather , but i 'm glad you 're here . '' </s> 	
+---------------------------------	
+init: </s> a bus driver wanted to save gas so he did n't come to a full stop . </s> he slowed down just enough for people to hop on the bus . </s> a man jumped at the doorway but missed . </s> the bus driver felt that if you fell you did n't deserve a ride . </s> 	
+cont: did save gas slowed hop doorway deserve driver you bus 	
+pred: </s> a bus driver wanted to save gas so he did n't come to a full stop . </s> he slowed down just enough for people to hop on the bus . </s> a man jumped at the doorway but missed . </s> the bus driver felt that if you fell you did n't deserve a ride . </s> `` you did n't deserve to save your life , did you ? '' </s> 	
+---------------------------------	
+init: </s> gary was looking through his fridge for snacks . </s> while looking at his food , he noticed everything had small bite marks . </s> after looking through his kitchen , he determined he had mice . </s> gary called the local exterminator , who went to gary 's house quickly . </s> 	
+cont: determined bite fridge snacks mice exterminator through marks looking gary 	
+pred: </s> gary was looking through his fridge for snacks . </s> while looking at his food , he noticed everything had small bite marks . </s> after looking through his kitchen , he determined he had mice . </s> gary called the local exterminator , who went to gary 's house quickly . </s> looking through the fridge , i could see the bite marks on the back of his hand . </s> 	
+---------------------------------	
+init: </s> natalie had auditioned for the lead in the school play . </s> she won the part and was super excited . </s> she rehearsed for weeks and weeks . </s> on opening night , she acted her little heart out . </s> 	
+cont: part heart opening lead super acted auditioned natalie rehearsed weeks 	
+pred: </s> natalie had auditioned for the lead in the school play . </s> she won the part and was super excited . </s> she rehearsed for weeks and weeks . </s> on opening night , she acted her little heart out . </s> no part of this book may be reproduced or transmitted in any form or by any means . </s> 	
+---------------------------------	
+init: </s> mr egg was presenting a volcanic eruption to the science class . </s> he had a diagram of a volcano that looked like it was made of tinfoil . </s> he then took out a huge thing of vinegar , and started to pour it in ! </s> the class had no clue what was going on and looked on in astonishment . </s> 	
+cont: clue class volcano vinegar presenting astonishment diagram eruption volcanic tinfoil 	
+pred: </s> mr egg was presenting a volcanic eruption to the science class . </s> he had a diagram of a volcano that looked like it was made of tinfoil . </s> he then took out a huge thing of vinegar , and started to pour it in ! </s> the class had no clue what was going on and looked on in astonishment . </s> `` i do n't know what you 're talking about , '' he said . </s> 	
+---------------------------------	
+init: </s> samantha 's dad always taught her how to be self-sufficient . </s> he even taught her how to change a tire on a car . </s> one day samantha 's tire blew while she was driving . </s> she was able to properly change her tire . </s> 	
+cont: her blew self properly how sufficient change taught samantha tire 	
+pred: </s> samantha 's dad always taught her how to be self-sufficient . </s> he even taught her how to change a tire on a car . </s> one day samantha 's tire blew while she was driving . </s> she was able to properly change her tire . </s> her father taught her how to properly change a tire in the middle of the night . </s> 	
+---------------------------------	
+init: </s> one day , a pig wandered onto my parents farm . </s> i always wanted one for a pet , so i did my best to keep it a secret . </s> i kept him in the small shed on the edge of the farm . </s> i snuck him food and water and played with him everyday . </s> 	
+cont: my onto secret snuck edge wandered shed him pig farm 	
+pred: </s> one day , a pig wandered onto my parents farm . </s> i always wanted one for a pet , so i did my best to keep it a secret . </s> i kept him in the small shed on the edge of the farm . </s> i snuck him food and water and played with him everyday . </s> `` my secret is safe with him , '' he said in a low voice . </s> 	
+---------------------------------	
+init: </s> jane passed a small park-like zoo she remembered visiting as a child . </s> she turned her car into the park , feeling nostalgic . </s> jane went to see the deer , like the ones she once fed by hand . </s> she saw these deer were scrawny , mangy and had terrified eyes . </s> 	
+cont: these terrified she like nostalgic scrawny park jane mangy deer 	
+pred: </s> jane passed a small park-like zoo she remembered visiting as a child . </s> she turned her car into the park , feeling nostalgic . </s> jane went to see the deer , like the ones she once fed by hand . </s> she saw these deer were scrawny , mangy and had terrified eyes . </s> she looked like a terrified deer caught in the headlights of a car park . </s> 	
+---------------------------------	
+init: </s> it had been a long day . </s> mary was ready to sit back and relax . </s> she put on a movie and made some popcorn . </s> the movie was much better than she anticipated . </s> 	
+cont: long better than ready mary sit relax popcorn anticipated movie 	
+pred: </s> it had been a long day . </s> mary was ready to sit back and relax . </s> she put on a movie and made some popcorn . </s> the movie was much better than she anticipated . </s> `` better than i anticipated , '' said mary jane , ready to sit down and relax . </s> 	
+---------------------------------	
+init: </s> jill was excited to ski for the first time . </s> her dad took her to the bunny slope . </s> she caught on very quickly . </s> after about an hour she looked sad . </s> 	
+cont: excited dad quickly caught hour sad jill ski bunny slope 	
+pred: </s> jill was excited to ski for the first time . </s> her dad took her to the bunny slope . </s> she caught on very quickly . </s> after about an hour she looked sad . </s> i quickly caught my dad 's eye and gave him a sad , excited smile . </s> 	
+---------------------------------	
+init: </s> mark likes to play guitar . </s> mark booked a gig at a local coffeeshop . </s> mark played guitar for 2 hours . </s> the 50 people who showed up applauded him . </s> 	
+cont: played showed likes 50 booked gig applauded coffeeshop guitar mark 	
+pred: </s> mark likes to play guitar . </s> mark booked a gig at a local coffeeshop . </s> mark played guitar for 2 hours . </s> the 50 people who showed up applauded him . </s> mark played the guitar a few times , and then he showed up at the gig . </s> 	
+---------------------------------	
+init: </s> billy 's car broke down on the highway . </s> he looked under the hood and realized his starter was broken . </s> the nearest mechanic quoted billy 300 dollars , which was far too much . </s> he instead called a friend who came and fixed the starter for $ 100 . </s> 	
+cont: fixed 100 highway mechanic nearest hood 300 quoted billy starter 	
+pred: </s> billy 's car broke down on the highway . </s> he looked under the hood and realized his starter was broken . </s> the nearest mechanic quoted billy 300 dollars , which was far too much . </s> he instead called a friend who came and fixed the starter for $ 100 . </s> `` i do n't know what you 're talking about , '' he said . </s> 	
+---------------------------------	
+init: </s> frankie had christmas shopping to do . </s> she went to the store . </s> inside , she walked around looking for gifts . </s> soon her cart was full . </s> 	
+cont: walked soon looking inside christmas full shopping gifts cart frankie 	
+pred: </s> frankie had christmas shopping to do . </s> she went to the store . </s> inside , she walked around looking for gifts . </s> soon her cart was full . </s> as soon as she walked inside , she was looking at a christmas shopping cart full of gifts . </s> 	
+---------------------------------	
+init: </s> rex had given up on any dreams of becoming a father . </s> he was never a good looking man and he did n't have any money . </s> one day rex met a nice woman who liked him despite his shortcomings . </s> they became married and eventually had a son . </s> 	
+cont: woman father married given despite becoming dreams any shortcomings rex 	
+pred: </s> rex had given up on any dreams of becoming a father . </s> he was never a good looking man and he did n't have any money . </s> one day rex met a nice woman who liked him despite his shortcomings . </s> they became married and eventually had a son . </s> any other woman would have given up her dreams of becoming a married woman despite her father 's shortcomings . </s> 	
+---------------------------------	
+init: </s> laura had just graduated college . </s> she was planning on moving on california . </s> she packed all her belongings in her car and drove 18 hours . </s> when she arrived at her new apartment she unpacked all her things . </s> 	
+cont: packed planning graduated laura 18 california belongings she her unpacked 	
+pred: </s> laura had just graduated college . </s> she was planning on moving on california . </s> she packed all her belongings in her car and drove 18 hours . </s> when she arrived at her new apartment she unpacked all her things . </s> she packed up her belongings , unpacked her bag , and headed out the door . </s> 	
+---------------------------------	
+init: </s> mia sat at home in her living room watching sports . </s> her favorite soccer team was playing their rival . </s> to encourage her team , she began chanting positive phrases . </s> during her chant , her favorite team scored a goal . </s> 	
+cont: positive mia rival encourage favorite phrases chanting her chant team 	
+pred: </s> mia sat at home in her living room watching sports . </s> her favorite soccer team was playing their rival . </s> to encourage her team , she began chanting positive phrases . </s> during her chant , her favorite team scored a goal . </s> her hair was pulled back in a ponytail , and she was wearing her favorite pair of jeans . </s> 	
+---------------------------------	
+init: </s> shannon was driving in the highway . </s> she then sees a car heading right towards her . </s> she has no way of escape . </s> the car hits her and both cars are wrecked . </s> 	
+cont: towards cars highway sees hits escape heading car shannon wrecked 	
+pred: </s> shannon was driving in the highway . </s> she then sees a car heading right towards her . </s> she has no way of escape . </s> the car hits her and both cars are wrecked . </s> he sees the car heading towards the highway and hits the cars on the side of the road . </s> 	
+---------------------------------	
+init: </s> nate could n't stop calling diana . </s> when she arrived in school , she looked in all directions . </s> when she saw nate walking , she tried to run to the cafeteria . </s> he did n't see her for the whole day . </s> 	
+cont: stop whole run when calling directions diana she cafeteria nate 	
+pred: </s> nate could n't stop calling diana . </s> when she arrived in school , she looked in all directions . </s> when she saw nate walking , she tried to run to the cafeteria . </s> he did n't see her for the whole day . </s> when she 'd run out of the cafeteria , she 'd been calling the whole thing off . </s> 	
+---------------------------------	
+init: </s> after her divorce , sandy spent a lot of time alone . </s> her friends asked her to socialize with them , but she demurred . </s> her friends descended upon her with food and movies to watch . </s> they had a very fun evening and sandy realized she had missed them . </s> 	
+cont: evening upon them friends divorce descended socialize her demurred sandy 	
+pred: </s> after her divorce , sandy spent a lot of time alone . </s> her friends asked her to socialize with them , but she demurred . </s> her friends descended upon her with food and movies to watch . </s> they had a very fun evening and sandy realized she had missed them . </s> her friends had descended upon them in the middle of the night . </s> 	
+---------------------------------	
+init: </s> bogart lived on a farm . </s> he loved bacon . </s> he decided to buy a pig . </s> shortly after , he grew fond of the pig . </s> 	
+cont: buy he lived grew farm shortly bacon fond bogart pig 	
+pred: </s> bogart lived on a farm . </s> he loved bacon . </s> he decided to buy a pig . </s> shortly after , he grew fond of the pig . </s> he lived in a pig farm , and he grew fond of it . </s> 	
+---------------------------------	
+init: </s> the preschoolers were going on a field trip . </s> their teachers took them to the fire station . </s> they talked to the firefighters . </s> they saw the fire truck . </s> 	
+cont: trip they talked truck field station teachers firefighters fire preschoolers 	
+pred: </s> the preschoolers were going on a field trip . </s> their teachers took them to the fire station . </s> they talked to the firefighters . </s> they saw the fire truck . </s> they talked about the fire truck and the field trip to the station . </s> 	
+---------------------------------	
+init: </s> gina 's crush sat behind her in class . </s> he was rude . </s> and way more obnoxious than she had realized . </s> she began to dread seeing him . </s> 	
+cont: class than sat gina behind seeing crush rude obnoxious dread 	
+pred: </s> gina 's crush sat behind her in class . </s> he was rude . </s> and way more obnoxious than she had realized . </s> she began to dread seeing him . </s> he sat on the edge of the bed , his hands behind his head , staring at the ceiling . </s> 	
+---------------------------------	
+init: </s> olivia was a ballerina . </s> her dream was to dance internationally . </s> one day , the opportunity for an audition came up . </s> she went for it , and tried out . </s> 	
+cont: came tried for dance dream audition opportunity olivia ballerina internationally 	
+pred: </s> olivia was a ballerina . </s> her dream was to dance internationally . </s> one day , the opportunity for an audition came up . </s> she went for it , and tried out . </s> for the first time since i came back from the dance , i tried to remember the dream . </s> 	
+---------------------------------	
+init: </s> tim was a salesman . </s> he worked at an electronic store . </s> one day he had customers who were unsure . </s> he convinced them to buy . </s> 	
+cont: buy who worked tim he convinced customers unsure salesman electronic 	
+pred: </s> tim was a salesman . </s> he worked at an electronic store . </s> one day he had customers who were unsure . </s> he convinced them to buy . </s> he was unsure who he was dealing with , but he was convinced that it worked . </s> 	
+---------------------------------	
+init: </s> today was april fools day and everyone played pranks on each other . </s> jeff was sneaking towards dan , who was sitting down . </s> when jeff turned around , and shouted . </s> the chair ended up breaking when jeff called . </s> 	
+cont: sitting towards chair breaking shouted april sneaking pranks fools jeff 	
+pred: </s> today was april fools day and everyone played pranks on each other . </s> jeff was sneaking towards dan , who was sitting down . </s> when jeff turned around , and shouted . </s> the chair ended up breaking when jeff called . </s> jeff was sitting in the chair in front of me , his arms crossed over his chest . </s> 	
+---------------------------------	
+init: </s> betty had a craving for mint ice cream . </s> she went to a local ice cream parlor , but they did n't have mint . </s> she went to a grocery store , but they did n't have mint either . </s> betty ended up buying some ice , some cream , and some mint . </s> 	
+cont: buying either have craving parlor some betty ice cream mint 	
+pred: </s> betty had a craving for mint ice cream . </s> she went to a local ice cream parlor , but they did n't have mint . </s> she went to a grocery store , but they did n't have mint either . </s> betty ended up buying some ice , some cream , and some mint . </s> `` i have some ice cream , but i 'm not buying it either . '' </s> 	
+---------------------------------	
+init: </s> cade is short , and gets picked on at school . </s> his mother tells him he will soon grow very tall like his dad . </s> within a few months cade had grow a whole inch . </s> and within one year cade was the tallest boy in his class . </s> 	
+cont: gets his short tall tells inch tallest within grow cade 	
+pred: </s> cade is short , and gets picked on at school . </s> his mother tells him he will soon grow very tall like his dad . </s> within a few months cade had grow a whole inch . </s> and within one year cade was the tallest boy in his class . </s> his expression tells me he knows exactly what i 'm talking about , and he gets it . </s> 	
+---------------------------------	
+init: </s> amber drove home from work one night </s> it was really bad weather outside </s> she went down a dark road that was covered in water </s> she could not tell how deep the water was and drove into a flood </s> 	
+cont: road tell dark weather covered deep amber flood water drove 	
+pred: </s> amber drove home from work one night </s> it was really bad weather outside </s> she went down a dark road that was covered in water </s> she could not tell how deep the water was and drove into a flood </s> deep , dark water covered the road , and she could n't tell if it was from the weather . </s> 	
+---------------------------------	
+init: </s> erica wanted to help her mom this thanksgiving . </s> she wanted to make chicken pot pie for her family . </s> she bought all the ingredients at the store . </s> when she came home she remembered her oven was n't working . </s> 	
+cont: her remembered chicken ingredients oven pot pie thanksgiving she erica 	
+pred: </s> erica wanted to help her mom this thanksgiving . </s> she wanted to make chicken pot pie for her family . </s> she bought all the ingredients at the store . </s> when she came home she remembered her oven was n't working . </s> she opened her mouth to say something , but then remembered that it was n't a chicken pot pie . </s> 	
+---------------------------------	
+init: </s> ben came home one day and found a huge mess . </s> his plants were knocked over and newspaper was everywhere , shredded . </s> ben called for his dog sternly . </s> but his dog was hiding and did not come to him . </s> 	
+cont: his knocked mess plants newspaper hiding dog shredded sternly ben 	
+pred: </s> ben came home one day and found a huge mess . </s> his plants were knocked over and newspaper was everywhere , shredded . </s> ben called for his dog sternly . </s> but his dog was hiding and did not come to him . </s> his hair was a mess , his clothes were shredded , and the dog was hiding behind his newspaper . </s> 	
+---------------------------------	
+init: </s> sarah was on a bus to her work . </s> she had to pee very badly . </s> she could n't hold it much longer . </s> she got off the bus early to pee . </s> 	
+cont: off much early longer she badly sarah hold bus pee 	
+pred: </s> sarah was on a bus to her work . </s> she had to pee very badly . </s> she could n't hold it much longer . </s> she got off the bus early to pee . </s> how much longer she could hold off until the early hours of the morning . </s> 	
+---------------------------------	
+init: </s> james needed a new pick up truck for work . </s> he hauled wooden logs for a living . </s> he searched all over on craigslist . </s> finally he found a red truck that he liked . </s> 	
+cont: red living searched james he craigslist wooden logs hauled truck 	
+pred: </s> james needed a new pick up truck for work . </s> he hauled wooden logs for a living . </s> he searched all over on craigslist . </s> finally he found a red truck that he liked . </s> he searched the living room and saw a red truck parked on the side of the road . </s> 	
+---------------------------------	
+init: </s> susie sells the 31 products for extra money . </s> they are totes that are sold to mother 's typically . </s> they like them to help bring all their stuff with them . </s> it makes for easier travel and they are stylish . </s> 	
+cont: travel easier they products sells stylish 31 typically totes are 	
+pred: </s> susie sells the 31 products for extra money . </s> they are totes that are sold to mother 's typically . </s> they like them to help bring all their stuff with them . </s> it makes for easier travel and they are stylish . </s> `` they are easier to travel with than they typically are , '' he said . </s> 	
+---------------------------------	
+init: </s> mike was making dinner . </s> he was making a pasta and started with the sauce . </s> he used tomatoes and fresh vegetables . </s> and got fresh herbs from his garden . </s> 	
+cont: dinner mike garden vegetables sauce pasta tomatoes herbs making fresh 	
+pred: </s> mike was making dinner . </s> he was making a pasta and started with the sauce . </s> he used tomatoes and fresh vegetables . </s> and got fresh herbs from his garden . </s> i 'm making pasta sauce with vegetables and fresh tomatoes for dinner in the garden . </s> 	
+---------------------------------	
+init: </s> today on the view there was a lot of fighting . </s> when the women were talking about hot topics they disagreed . </s> the war topic made them polarized . </s> rosie and elizabeth went at it fighting about the war . </s> 	
+cont: women view elizabeth disagreed topic rosie topics polarized fighting war 	
+pred: </s> today on the view there was a lot of fighting . </s> when the women were talking about hot topics they disagreed . </s> the war topic made them polarized . </s> rosie and elizabeth went at it fighting about the war . </s> `` i do n't know , '' i said , fighting to keep my voice even . </s> 	
+---------------------------------	
+init: </s> elliott and tim were on a high school tennis team . </s> they had to play each other for the number 1 ranking spot . </s> the match needed to be played , it was pouring rain , and elliott won . </s> tim complained the next day to the coach about the rain being unfair . </s> 	
+cont: number complained match tennis pouring unfair tim ranking rain elliott 	
+pred: </s> elliott and tim were on a high school tennis team . </s> they had to play each other for the number 1 ranking spot . </s> the match needed to be played , it was pouring rain , and elliott won . </s> tim complained the next day to the coach about the rain being unfair . </s> the rain was still pouring down from the sky , and the sky was beginning to lighten . </s> 	
+---------------------------------	
+init: </s> today i saw a woman with a baby . </s> she was helping the baby eat lunch . </s> i was thinking about what it would be like to be feeding a baby . </s> i decided that i wanted a baby someday . </s> 	
+cont: today eat lunch woman thinking be helping feeding someday baby 	
+pred: </s> today i saw a woman with a baby . </s> she was helping the baby eat lunch . </s> i was thinking about what it would be like to be feeding a baby . </s> i decided that i wanted a baby someday . </s> `` i 'm thinking about helping you eat lunch today , '' the woman said , feeding the baby . </s> 	
+---------------------------------	
+init: </s> louisa and her family took a trip to epcot . </s> the family was super excited . </s> they could n't contain their excitement . </s> the moment they got to the park they took pictures . </s> 	
+cont: pictures moment took super excitement they family contain louisa epcot 	
+pred: </s> louisa and her family took a trip to epcot . </s> the family was super excited . </s> they could n't contain their excitement . </s> the moment they got to the park they took pictures . </s> it took a moment for her to realize that they were talking about her family . </s> 	
+---------------------------------	
+init: </s> joanie 's mom signed her up for swimming lessons at a lake . </s> each day she rode a bus to the lake to take lessons . </s> joanie learned the final test was swimming from a boat to shore . </s> she was petrified and prayed to get out of the test . </s> 	
+cont: rode final shore prayed test petrified swimming lake lessons joanie 	
+pred: </s> joanie 's mom signed her up for swimming lessons at a lake . </s> each day she rode a bus to the lake to take lessons . </s> joanie learned the final test was swimming from a boat to shore . </s> she was petrified and prayed to get out of the test . </s> they rode in silence for a few minutes until they reached the shore of the lake . </s> 	
+---------------------------------	
+init: </s> i tried to start jogging last week . </s> i got my running shoes on and went out . </s> i was excited and ready to go when it started to rainy . </s> i turned around and went home instead . </s> 	
+cont: and turned instead ready start running went shoes rainy jogging 	
+pred: </s> i tried to start jogging last week . </s> i got my running shoes on and went out . </s> i was excited and ready to go when it started to rainy . </s> i turned around and went home instead . </s> instead , he turned and went back into the house , ready to start running again . </s> 	
+---------------------------------	
+init: </s> john woke up sick today . </s> he washed his face in the bathroom . </s> john went into the kitchen to make some soup . </s> he put a bowl of soup into the microwave . </s> 	
+cont: sick face kitchen bathroom bowl washed into microwave john soup 	
+pred: </s> john woke up sick today . </s> he washed his face in the bathroom . </s> john went into the kitchen to make some soup . </s> he put a bowl of soup into the microwave . </s> i washed my face in the bathroom sink into a bowl of soup on the kitchen counter . </s> 	
+---------------------------------	
+init: </s> tyrese joined a new gym . </s> the membership allows him to work out for a year . </s> tyrese got very distracted during the year . </s> he lost his job and his grandfather died . </s> 	
+cont: during died joined gym distracted grandfather membership year allows tyrese 	
+pred: </s> tyrese joined a new gym . </s> the membership allows him to work out for a year . </s> tyrese got very distracted during the year . </s> he lost his job and his grandfather died . </s> my grandfather died during my first year of high school and joined the gym membership . </s> 	
+---------------------------------	
+init: </s> ryder needed to go outside . </s> his owner opened the door for him . </s> ryder played outside . </s> he came back in smelling like a dead animal . </s> 	
+cont: like played door opened owner animal dead smelling outside ryder 	
+pred: </s> ryder needed to go outside . </s> his owner opened the door for him . </s> ryder played outside . </s> he came back in smelling like a dead animal . </s> he opened the door and stepped outside , smelling like an animal in the dead of night . </s> 	
+---------------------------------	
+init: </s> jimmy just became a police officer in chicago . </s> he is only two weeks into his job and he is nervous . </s> every time he responds to calls he gets very worried . </s> his partner told him that the nerves go away in time . </s> 	
+cont: jimmy time calls officer he is nerves partner chicago responds 	
+pred: </s> jimmy just became a police officer in chicago . </s> he is only two weeks into his job and he is nervous . </s> every time he responds to calls he gets very worried . </s> his partner told him that the nerves go away in time . </s> he is an officer of the chicago police department , and he calls me his partner . </s> 	
+---------------------------------	
+init: </s> tony needed to get gas on his way home . </s> he only had enough money to fill half of his tank . </s> when he went to pay for it , he was did n't owe anything . </s> someone else had already paid for a full tank of gas for him . </s> 	
+cont: paid half else already for tony fill owe gas tank 	
+pred: </s> tony needed to get gas on his way home . </s> he only had enough money to fill half of his tank . </s> when he went to pay for it , he was did n't owe anything . </s> someone else had already paid for a full tank of gas for him . </s> `` i already paid for the gas tank , and i owe you half a million dollars . '' </s> 	
+---------------------------------	
+init: </s> taylor started working for a man named mark . </s> she wanted to make a good impression on him . </s> she began asking questions about him in hopes of finding an affinity . </s> she learned that he was a great guitar player . </s> 	
+cont: player mark asking finding guitar questions hopes taylor impression affinity 	
+pred: </s> taylor started working for a man named mark . </s> she wanted to make a good impression on him . </s> she began asking questions about him in hopes of finding an affinity . </s> she learned that he was a great guitar player . </s> `` i 'm not asking questions you do n't want to answer . '' </s> 	
+---------------------------------	
+init: </s> we moved from our condo in 2013 . </s> we had been in our condo since 1987 . </s> my wife went to the store to buy moving boxes . </s> she bought boxes that were too large . </s> 	
+cont: wife moved large moving we 2013 1987 our boxes condo 	
+pred: </s> we moved from our condo in 2013 . </s> we had been in our condo since 1987 . </s> my wife went to the store to buy moving boxes . </s> she bought boxes that were too large . </s> we moved into our condo , moving our large boxes to the other side of the room . </s> 	
+---------------------------------	
+init: </s> the girl was scared to go outside . </s> her mom encouraged her to go . </s> she ended up going . </s> she met other kids . </s> 	
+cont: mom other ended outside kids girl met scared go encouraged 	
+pred: </s> the girl was scared to go outside . </s> her mom encouraged her to go . </s> she ended up going . </s> she met other kids . </s> the other kids were scared to go outside , but mom met them at the door . </s> 	
+---------------------------------	
+init: </s> trevor and his wife were at home on his day off . </s> they decided to spend their day watching a movie together . </s> right as they sat down to start the movie , they heard a doorbell . </s> trevor got the door and saw his parents had come to visit . </s> 	
+cont: start watching day visit spend his they doorbell movie trevor 	
+pred: </s> trevor and his wife were at home on his day off . </s> they decided to spend their day watching a movie together . </s> right as they sat down to start the movie , they heard a doorbell . </s> trevor got the door and saw his parents had come to visit . </s> they spend the day watching a movie , and i start to think about his visit . </s> 	
+---------------------------------	
+init: </s> sally decided to get a haircut . </s> she went to the stylist and got her cut . </s> she was upset when she realized the stylist cut it way too short . </s> the stylist did not charge her but that did not fix her hair . </s> 	
+cont: she fix short sally her not haircut charge cut stylist 	
+pred: </s> sally decided to get a haircut . </s> she went to the stylist and got her cut . </s> she was upset when she realized the stylist cut it way too short . </s> the stylist did not charge her but that did not fix her hair . </s> she cut her short , short haircut , not a hair out of place . </s> 	
+---------------------------------	
+init: </s> kyle 's mom had been in the military and was very proud of it . </s> she found her pet watermelon mel in the corner of the garden . </s> she painted eyes and a mouth onto her pet with the marker . </s> her grandmother gave her yarn to glue on for hair . </s> 	
+cont: painted kyle military glue her mel watermelon yarn marker pet 	
+pred: </s> kyle 's mom had been in the military and was very proud of it . </s> she found her pet watermelon mel in the corner of the garden . </s> she painted eyes and a mouth onto her pet with the marker . </s> her grandmother gave her yarn to glue on for hair . </s> her hair was pulled back into a ponytail , and her face was painted with military precision . </s> 	
+---------------------------------	
+init: </s> jan 's lamp broke . </s> jan decided to get a new lamp . </s> he went to the store . </s> he found a lamp he liked . </s> 	
+cont: decided new get found store liked broke he jan lamp 	
+pred: </s> jan 's lamp broke . </s> jan decided to get a new lamp . </s> he went to the store . </s> he found a lamp he liked . </s> he decided to get the hell out of the store and found a new place to live . </s> 	
+---------------------------------	
+init: </s> this year i watched the nba dunk contest with my friends . </s> the dunks were out of this world ! </s> aaron gordon and zach lavine put on a great show for the fans ! </s> i have never seen those kind of dunks before in my life ! </s> 	
+cont: those fans this aaron zach nba dunk gordon lavine dunks 	
+pred: </s> this year i watched the nba dunk contest with my friends . </s> the dunks were out of this world ! </s> aaron gordon and zach lavine put on a great show for the fans ! </s> i have never seen those kind of dunks before in my life ! </s> this ebook may not be re-sold or given away to other people . </s> 	
+---------------------------------	
+init: </s> it was tyler 's first day of kindergarten . </s> he was very nervous . </s> he clung to his mother 's leg , but she finally left and he had to stay . </s> after a little while , he started to take part in the class . </s> 	
+cont: mother little nervous stay part leg he tyler kindergarten clung 	
+pred: </s> it was tyler 's first day of kindergarten . </s> he was very nervous . </s> he clung to his mother 's leg , but she finally left and he had to stay . </s> after a little while , he started to take part in the class . </s> he was a little nervous , but part of me wanted to stay the hell away from him . </s> 	
+---------------------------------	
+init: </s> gloria wanted to find a special new dress for her anniversary dinner . </s> she ordered a fancy black dress that looked lovely in a catalog . </s> when the dress arrived , gloria was excited to try it on . </s> sadly , the dress was frumpy and saggy and the zipper broke at once . </s> 	
+cont: fancy sadly lovely anniversary zipper catalog frumpy saggy gloria dress 	
+pred: </s> gloria wanted to find a special new dress for her anniversary dinner . </s> she ordered a fancy black dress that looked lovely in a catalog . </s> when the dress arrived , gloria was excited to try it on . </s> sadly , the dress was frumpy and saggy and the zipper broke at once . </s> `` it 's a lovely dress , '' she said , looking at him sadly . </s> 	
+---------------------------------	
+init: </s> i wanted to run a computer program . </s> but , my computer did n't have enough ram . </s> so , i decided to upgrade my ram . </s> alas , my computer did n't allow ram upgrades . </s> 	
+cont: run did program alas allow upgrade my upgrades computer ram 	
+pred: </s> i wanted to run a computer program . </s> but , my computer did n't have enough ram . </s> so , i decided to upgrade my ram . </s> alas , my computer did n't allow ram upgrades . </s> `` i did n't run my computer program , did i ? '' </s> 	
+---------------------------------	
+init: </s> roxy and sam had everything they needed to make a huge sand castle . </s> they spent the morning talking about their design . </s> after lunch they started construction . </s> by evening , everyone was gathered around their masterpiece . </s> 	
+cont: evening gathered sand construction their design they castle roxy masterpiece 	
+pred: </s> roxy and sam had everything they needed to make a huge sand castle . </s> they spent the morning talking about their design . </s> after lunch they started construction . </s> by evening , everyone was gathered around their masterpiece . </s> they made their way back to the castle and gathered up the rest of the evening meal . </s> 	
+---------------------------------	
+init: </s> bailey needed a haircut . </s> one day she went to a salon . </s> the salon gave her a haircut . </s> she loved how healthy her hair felt . </s> 	
+cont: felt needed gave her how hair healthy bailey haircut salon 	
+pred: </s> bailey needed a haircut . </s> one day she went to a salon . </s> the salon gave her a haircut . </s> she loved how healthy her hair felt . </s> she gave her hair a gentle tug and felt how much she needed a haircut in the salon . </s> 	
+---------------------------------	
+init: </s> it had been raining for 2 days straight . </s> the sky finally turned blue . </s> when i looked up there was a rainbow . </s> it stretched for miles across the town . </s> 	
+cont: days town across blue miles straight sky raining stretched rainbow 	
+pred: </s> it had been raining for 2 days straight . </s> the sky finally turned blue . </s> when i looked up there was a rainbow . </s> it stretched for miles across the town . </s> the blue sky stretched across miles and miles , straight into town . </s> 	
+---------------------------------	
+init: </s> jake was biking at the park . </s> he did n't notice a large mud puddle in the ground . </s> his bike splashed mud all over his pants . </s> jake changed into shorts when he got back to his car . </s> 	
+cont: changed his notice pants puddle splashed shorts biking jake mud 	
+pred: </s> jake was biking at the park . </s> he did n't notice a large mud puddle in the ground . </s> his bike splashed mud all over his pants . </s> jake changed into shorts when he got back to his car . </s> his shorts and pants were splashed with mud , but he did n't seem to notice . </s> 	
+---------------------------------	
+init: </s> katie went to a girl 's camp across the lake from a boy 's camp . </s> when the girls went swimming , the boys across the lake watched . </s> katie noticed that the boys did n't watch her . </s> she climbed a rock to get their attention by diving . </s> 	
+cont: attention swimming rock climbed diving across lake boys camp katie 	
+pred: </s> katie went to a girl 's camp across the lake from a boy 's camp . </s> when the girls went swimming , the boys across the lake watched . </s> katie noticed that the boys did n't watch her . </s> she climbed a rock to get their attention by diving . </s> the boys climbed across the rock , diving into the lake , swimming in the water . </s> 	
+---------------------------------	
+init: </s> fiona loves eating contests . </s> her state 's fair is having a pie eating contest . </s> she entered the contest right away . </s> she tried her best to win the contest . </s> 	
+cont: loves win entered state fair pie fiona contests eating contest 	
+pred: </s> fiona loves eating contests . </s> her state 's fair is having a pie eating contest . </s> she entered the contest right away . </s> she tried her best to win the contest . </s> `` i 'm going to win this contest , and i 'm going to give you fair warning . '' </s> 	
+---------------------------------	
+init: </s> teddy was going on a big trip . </s> he was headed to the rainy forest for the first time . </s> he arrived and got off the plane . </s> he made his way to the tour guide and the trip began . </s> 	
+cont: arrived he headed plane rainy tour forest teddy guide trip 	
+pred: </s> teddy was going on a big trip . </s> he was headed to the rainy forest for the first time . </s> he arrived and got off the plane . </s> he made his way to the tour guide and the trip began . </s> when he arrived at the plane , he headed in the direction of the tour guide . </s> 	
+---------------------------------	
+init: </s> john is a big fan of game of thrones . </s> however , he has not read the books . </s> last week , george spoiled what happens accidentally . </s> john was furious . </s> 	
+cont: read accidentally books fan george furious spoiled happens john thrones 	
+pred: </s> john is a big fan of game of thrones . </s> however , he has not read the books . </s> last week , george spoiled what happens accidentally . </s> john was furious . </s> `` i read books , '' i said , trying to keep my voice even . </s> 	
+---------------------------------	
+init: </s> george was at the hotel last night . </s> he needed ice for his drinks . </s> the room he was in was all out . </s> he had to go out to the ice machine to get more . </s> 	
+cont: more last room out he hotel drinks machine george ice 	
+pred: </s> george was at the hotel last night . </s> he needed ice for his drinks . </s> the room he was in was all out . </s> he had to go out to the ice machine to get more . </s> he walked out of the hotel room with more drinks and a glass of ice water . </s> 	
+---------------------------------	
+init: </s> one afternoon , i let my dog , , outside to play . </s> was enjoying herself until she noticed a rabbit nearby . </s> the rabbit saw and started to hop away as fast as it could . </s> chased the rabbit for a long time , but finally had to stop . </s> 	
+cont: herself fast afternoon nearby as enjoying chased hop rabbit 	
+pred: </s> one afternoon , i let my dog , , outside to play . </s> was enjoying herself until she noticed a rabbit nearby . </s> the rabbit saw and started to hop away as fast as it could . </s> chased the rabbit for a long time , but finally had to stop . </s> as fast as she could , she chased after him , enjoying herself as much as she could . </s> 	
+---------------------------------	
+init: </s> allie had to go on a trip to the islands . </s> on the way there she had to go on a small plane . </s> she was very scared to do so . </s> the plane experienced a lot of turbulence . </s> 	
+cont: trip small scared allie on go experienced turbulence islands plane 	
+pred: </s> allie had to go on a trip to the islands . </s> on the way there she had to go on a small plane . </s> she was very scared to do so . </s> the plane experienced a lot of turbulence . </s> `` go on , trip , '' she said , her voice small and scared . </s> 	
+---------------------------------	
+init: </s> dakota was a senior in high school with mediocre grades . </s> dakota filled out an application to his local college . </s> he waited for a letter of reply from the college . </s> one day he went to the mailbox and found a thin envelope . </s> 	
+cont: grades senior application mailbox thin envelope reply mediocre college dakota 	
+pred: </s> dakota was a senior in high school with mediocre grades . </s> dakota filled out an application to his local college . </s> he waited for a letter of reply from the college . </s> one day he went to the mailbox and found a thin envelope . </s> `` i do n't know , '' i reply , looking down at the thin envelope in my hand . </s> 	
+---------------------------------	
+init: </s> the baby monkey was the newest addition to the zoo . </s> people came to see him in droves and he was soon very famous . </s> when the monkey grew up , he sired a family of his own . </s> these monkeys were very smart and people loved to watch them . </s> 	
+cont: famous these addition smart monkeys newest people droves sired monkey 	
+pred: </s> the baby monkey was the newest addition to the zoo . </s> people came to see him in droves and he was soon very famous . </s> when the monkey grew up , he sired a family of his own . </s> these monkeys were very smart and people loved to watch them . </s> in addition , these people were smart enough to know what they were doing . </s> 	
+---------------------------------	
+init: </s> jason wants to see a good movie . </s> he reads the movie listings to see what is available . </s> he chooses a superhero movie . </s> jason walks to the movie theater . </s> 	
+cont: theater walks available see reads superhero chooses listings jason movie 	

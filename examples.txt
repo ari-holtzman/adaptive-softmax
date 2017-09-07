@@ -1,0 +1,40 @@
+init: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> 	
+cont: make his well change doctors understood unhealthy dan parents overweight 	
+pred: </s> dan 's parents were overweight . </s> dan was overweight as well . </s> the doctors told his parents it was unhealthy . </s> his parents understood and decided to make a change . </s> he understood his parents well enough to know that they would make him change his mind . </s> 	
+---------------------------------	
+init: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> 	
+cont: learned sister ride wall crashed hill rides sneak carrie bike 	
+pred: </s> carrie had just learned how to ride a bike . </s> she did n't have a bike of her own . </s> carrie would sneak rides on her sister 's bike . </s> she got nervous on a hill and crashed into a wall . </s> she 'd learned to ride a bike and sneak rides with her sister . </s> 	
+---------------------------------	
+init: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> 	
+cont: date drive bit already drinking drunk asking beer he frank 	
+pred: </s> frank had been drinking beer . </s> he got a call from his girlfriend , asking where he was . </s> frank suddenly realized he had a date that night . </s> since frank was already a bit drunk , he could not drive . </s> he 'd already drunk a bit of beer and was drinking a glass of wine . </s> 	
+--------------------------------	
+init: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> 	
+cont: talk break successful artist future he propose promising brenda maxwell 	
+pred: </s> brenda was in love with her boyfriend maxwell . </s> he was a successful artist with a promising future . </s> maxwell told brenda he needed to talk to her . </s> she thought he 'd propose but he wanted to break up . </s> he did n't want to talk about the future , did n't want to break it . </s> 	
+---------------------------------	
+init: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> 	
+cont: lunch nothing eggs meat fridge mixed fried attempt leftovers yanice 	
+pred: </s> yanice opened the fridge and found nothing to eat . </s> however , there were leftovers . </s> she mixed it up in an attempt to make lunch . </s> since the place needed meat , she also fried and eggs . </s> there was nothing in the fridge except for leftovers mixed with eggs and fried meat . </s> 	
+---------------------------------	
+init: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> 	
+cont: screen he back tools chuck material sipped labored reclined porch 	
+pred: </s> chuck reclined on the back porch as he sipped his morning coffee . </s> today he would finally screen in this back porch . </s> he gathered his tools and material supplies . </s> he labored all day to finish the job . </s> he sat back in his chair and sipped his coffee , staring at the screen in front of him . </s> 	
+---------------------------------	
+nit: </s> dan wanted a pet for christmas . </s> he told his dad . </s> his dad listened , but did n't say anything . </s> so on christmas morning , and got a wonderful surprise . </s> 	
+cont: morning anything surprise pet dan say wonderful listened dad christmas 	
+pred: </s> dan wanted a pet for christmas . </s> he told his dad . </s> his dad listened , but did n't say anything . </s> so on christmas morning , and got a wonderful surprise . </s> `` morning , dad , '' i say , trying to keep the surprise out of my voice . </s> 	
+---------------------------------	
+nit: </s> dan was watching a youtube video . </s> his mom was in the kitchen , doing dishes . </s> suddenly , dan ran into the kitchen and started crying . </s> he had just seen a video of a man trampled by an elephant . </s> 	
+cont: watching seen crying dishes youtube elephant trampled kitchen dan video 	
+pred: </s> dan was watching a youtube video . </s> his mom was in the kitchen , doing dishes . </s> suddenly , dan ran into the kitchen and started crying . </s> he had just seen a video of a man trampled by an elephant . </s> `` i 've seen the video , '' he said , watching me closely . </s> 	
+---------------------------------	
+init: </s> virgil brought home a bright blue recliner he had found online . </s> his wife thought it was hideous and clashed with the decor . </s> virgil bought some fabric and had it reupholstered . </s> his wife complained again , saying bright green still clashed . </s> 	
+cont: saying fabric wife hideous decor recliner reupholstered bright clashed virgil 	
+pred: </s> virgil brought home a bright blue recliner he had found online . </s> his wife thought it was hideous and clashed with the decor . </s> virgil bought some fabric and had it reupholstered . </s> his wife complained again , saying bright green still clashed . </s> `` are you saying you do n't want to be a wife ? '' </s> 	
+---------------------------------	
+init: </s> joan entered the confessional and kneeled . </s> she thought she was confessing to the old parish priest . </s> joan confessed she had fantasized about the young visiting priest . </s> joan felt relief as she left the confessional . </s> 	
+cont: relief she confessed fantasized kneeled parish confessing priest confessional joan 	
+pred: </s> joan entered the confessional and kneeled . </s> she thought she was confessing to the old parish priest . </s> joan confessed she had fantasized about the young visiting priest . </s> joan felt relief as she left the confessional . </s> she took a deep breath and let it out slowly , letting the relief wash over her . </s> 	
+---------------------------------	
