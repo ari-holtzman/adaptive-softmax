@@ -20,7 +20,6 @@ end
 function AdaptiveLoss:remapTarget(target)
    local new_target = {target:clone()}
    local cutoff = self.cutoff
-   print(cutoff)
    for i = 1, #cutoff - 1 do
       local m = target:ge(cutoff[i] + 1):cmul(target:le(cutoff[i+1]))
       new_target[1][m] = cutoff[1] + i

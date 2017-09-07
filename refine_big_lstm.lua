@@ -101,7 +101,8 @@ local test  = tnt.DatasetIterator(tnt.RNNDataset(batch.test , tbsz, bptt))
 -- MAKE MODEL
 --------------------------------------------------------------------------------
 
-local cutoff = orig_config.cutoff
+local cutoff = tablex.map(tonumber, stringx.split(orig_config.cutoff, ','))
+table.insert(cutoff, ntoken)
 local crit = nn.AdaptiveLoss(cutoff)
 
 onsample = function(state)
