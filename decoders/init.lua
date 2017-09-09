@@ -388,10 +388,11 @@ decoders.contextual_beam_search =
 decoders.contextual_decider =
     function(model, rnn, dec, option1, option2, dic, r, g, cws, cr)
         local state = rnn:initializeHidden(1)
-        local inter = model:forward({state, torch.CudaTensor(option1):view(-1, 1)})
-        local base1 = dec:getSeqProbs(inter, {option2})
-        local inter = model:forward({state, torch.CudaTensor(option2):view(-1, 1)})
-        local base2 = dec:getSeqProbs(inter, {option1})
+        local t1, t2 = torch.CudaTensor(option1):view(-1, 1), torch.CudaTensor(option2):view(-1, 1)})
+        local inter = model:forward({state, t1})
+        local base1 = dec:getSeqProbs(inter, t1)
+        local inter = model:forward({state, t2})
+        local base2 = dec:getSeqProbs(inter, t2) 
 
         local lenr1 =  r * ((1 - math.pow(g, #option1)) / (1 - g))
         local lenr2 =  r * ((1 - math.pow(g, #option2)) / (1 - g))
