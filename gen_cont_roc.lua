@@ -39,7 +39,7 @@ else
     error('Dictionary not found!')
 end
 local all = torch.load(config.modelpath)
-dic = data.sortthresholddictionary(dic, all.config.threshold)
+dic = data.sortthresholddictionary(dic, all.config.threshold or 2)
 collectgarbage()
 
 local ntoken = #dic.idx2word 
@@ -101,7 +101,7 @@ while line ~= nil do
     print('')
     local template = { 
                         torch.CudaTensor(init_seq),
-                        torch.CudaTensor({data.getidx(dic, '</s>')})
+                        torch.CudaTensor({data.getidx(dic, '<unk>')})
                      }
                        
     local best = decoders.contextual_beam_search(model2,
