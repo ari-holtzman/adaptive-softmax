@@ -390,9 +390,9 @@ decoders.contextual_decider =
         local state = rnn:initializeHidden(1)
         local t1, t2 = torch.CudaTensor(option1):view(-1, 1), torch.CudaTensor(option2):view(-1, 1)
         local inter = model:forward({state, t1})
-        local base1 = dec:getSeqProbs(inter, t1)
+        local base1 = dec:getSeqProbs(inter, t1)[1]
         local inter = model:forward({state, t2})
-        local base2 = dec:getSeqProbs(inter, t2) 
+        local base2 = dec:getSeqProbs(inter, t2)[1]
 
         local lenr1 =  r * ((1 - math.pow(g, #option1)) / (1 - g))
         local lenr2 =  r * ((1 - math.pow(g, #option2)) / (1 - g))
@@ -416,8 +416,6 @@ decoders.contextual_decider =
             end
         end
 
-        print(base1:size())
-        print(base2:size())
         local s1, s2 = base1+lenr1+contr1, base2+lenr2+contr2
         local choice = s1 > s2 and 1 or 2
 
