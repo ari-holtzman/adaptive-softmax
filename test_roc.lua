@@ -86,6 +86,7 @@ while line ~= nil do
                 table.insert(ending2, idx)
             end
         elseif i == 3 then 
+            print(col)
             correctchoice = tonumber(col)
         else
           error('Too many columns!')
