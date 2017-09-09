@@ -416,6 +416,8 @@ decoders.contextual_decider =
             end
         end
 
+        print(base1:size())
+        print(base2:size())
         local s1, s2 = base1+lenr1+contr1, base2+lenr2+contr2
         local choice = s1 > s2 and 1 or 2
 
