@@ -101,26 +101,19 @@ while line ~= nil do
         end
         i = i + 1
     end
-    print('')
+    --table.insert(init_seq, data.getidx(dic, '</s>'))
     local template = { 
                         torch.CudaTensor(init_seq),
                         torch.CudaTensor({data.getidx(dic, '<unk>')})
                      }
                        
-    local best = decoders.contextual_beam_search(model2,
+    local best = decoders.template_beam_search(model2,
                                               rnn,
                                               dec,
                                               config.k,
                                               template,
-                                              dic,
-                                              config.r,
-                                              config.g,
-                                              config.maxsteps,
-                                              cws,
-                                              config.cr,
-                                              5,
-                                              config.v)
-    io.write('pred: ')
+                                              dic)
+   io.write('pred: ')
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
