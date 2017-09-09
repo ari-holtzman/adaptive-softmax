@@ -86,7 +86,7 @@ while line ~= nil do
                 table.insert(ending2, idx)
             end
         elseif i == 3 then 
-            correctchoice = tonumber(col:gmatch("%d+"))
+            correctchoice = tonumber(col)
         else
           error('Too many columns!')
         end
