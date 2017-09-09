@@ -391,6 +391,7 @@ decoders.contextual_decider =
         local t1, t2 = torch.CudaTensor(option1):view(-1, 1), torch.CudaTensor(option2):view(-1, 1)
         local inter = model:forward({state, t1})
         local base1 = dec:getSeqProbs(inter, t1)[1]
+        local state = rnn:initializeHidden(1)
         local inter = model:forward({state, t2})
         local base2 = dec:getSeqProbs(inter, t2)[1]
 
@@ -428,6 +429,7 @@ decoders.simple_decider =
         local t1, t2 = torch.CudaTensor(option1):view(-1, 1), torch.CudaTensor(option2):view(-1, 1)
         local inter = model:forward({state, t1})
         local base1 = dec:getSeqProbs(inter, t1)[1]
+        local state = rnn:initializeHidden(1)
         local inter = model:forward({state, t2})
         local base2 = dec:getSeqProbs(inter, t2)[1]
 
