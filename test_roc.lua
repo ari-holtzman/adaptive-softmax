@@ -99,7 +99,6 @@ while line ~= nil do
          if idx ~= 2 then 
              table.insert(cwl, idx)
              cws[idx] = true
-             io.write(dic.idx2word[idx] .. ' ')
          end
     end
     for _, idx in ipairs(ending1) do
@@ -108,6 +107,7 @@ while line ~= nil do
     for _, idx in ipairs(ending2) do
       table.insert(option2, idx)
     end
+    print(correct_choice)
     assert(correcthcoice == 1 or correctchoice == 2)
                        
     local choice = decoders.contextual_decider(model2,
@@ -123,6 +123,7 @@ while line ~= nil do
     
     ntotal = ntotal + 1
     ncorrect = ncorrect + (choice == correctchoice and 1 or 0)
+    print(ntotal .. ' ' .. ncorrect .. ' ' .. (100 * (ncorrect / ntotal)))
 
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end
