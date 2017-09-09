@@ -107,7 +107,7 @@ while line ~= nil do
     for _, idx in ipairs(ending2) do
       table.insert(option2, idx)
     end
-    print(correct_choice)
+    print(correctchoice)
     assert(correcthcoice == 1 or correctchoice == 2)
                        
     local choice = decoders.contextual_decider(model2,
