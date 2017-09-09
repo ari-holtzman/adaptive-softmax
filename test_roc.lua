@@ -70,7 +70,6 @@ while line ~= nil do
     local i = 0
     local prefix, ending1, ending2, correctchoice = {}, {}, {}, nil
     for col in line:gmatch("[^\t]+") do 
-        print(col)
         if i == 0 then
             for word in col:gmatch("[^ ]+") do
                 local idx = data.getidx(dic, word)
@@ -87,11 +86,11 @@ while line ~= nil do
                 table.insert(ending2, idx)
             end
         elseif i == 3 then 
-            print(col)
             correctchoice = tonumber(col)
         else
           error('Too many columns!')
         end
+        i = i + 1
     end
     local cws, cwl = {}, {}
     local option1, option2 = {}, {}
