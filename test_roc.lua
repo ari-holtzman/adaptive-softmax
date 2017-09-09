@@ -36,7 +36,6 @@ else
     error('Dictionary not found!')
 end
 local all = torch.load(config.modelpath)
-print(all.config.threshold)
 dic = data.sortthresholddictionary(dic, all.config.threshold or 2)
 collectgarbage()
 
