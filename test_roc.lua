@@ -64,7 +64,7 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
-local f = assert(io.open(config.contextpath, "r"))
+local f = assert(io.open(config.testpath, "r"))
 local line = f:read("*line")
 local ntotal, ncorrect = 0, 0
 while line ~= nil do
