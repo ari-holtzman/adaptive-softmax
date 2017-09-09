@@ -93,7 +93,7 @@ while line ~= nil do
     end
     local cws, cwl = {}, {}
     local option1, option2 = {}, {}
-    for idx in prefix do
+    for _, idx in ipairs(prefix) do
         table.insert(option1, idx)
         table.insert(option2, idx)
          if idx ~= 2 then 
@@ -102,10 +102,10 @@ while line ~= nil do
              io.write(dic.idx2word[idx] .. ' ')
          end
     end
-    for idx in ending1 do
+    for _, idx in ipairs(ending1) do
       table.insert(option1, idx)
     end
-    for idx in ending2 do
+    for _, idx in ipairs(ending2) do
       table.insert(option2, idx)
     end
     assert(correcthcoice == 1 or correctchoice == 2)
