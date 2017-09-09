@@ -422,6 +422,21 @@ decoders.contextual_decider =
         return choice
     end
 
+decoders.simple_decider =
+    function(model, rnn, dec, option1, option2, dic, r, g, cws, cr)
+        local state = rnn:initializeHidden(1)
+        local t1, t2 = torch.CudaTensor(option1):view(-1, 1), torch.CudaTensor(option2):view(-1, 1)
+        local inter = model:forward({state, t1})
+        local base1 = dec:getSeqProbs(inter, t1)[1]
+        local inter = model:forward({state, t2})
+        local base2 = dec:getSeqProbs(inter, t2)[1]
+
+        local s1, s2 = base1, base2
+        local choice = s1 > s2 and 1 or 2
+
+        return choice
+    end
+
 
 decoders.template_beam_search =
     function(model, rnn, dec, width, template, dic)
