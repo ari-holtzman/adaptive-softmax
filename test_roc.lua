@@ -110,7 +110,7 @@ while line ~= nil do
     end
     assert((correctchoice == 1) or (correctchoice == 2))
                        
-    local choice = decoders.simple_decider(model2,
+    local choice = decoders.contextual_decider(model2,
                                                rnn,
                                                dec,
                                                option1,
