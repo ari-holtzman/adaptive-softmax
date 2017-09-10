@@ -75,7 +75,8 @@ local state = rnn:initializeHidden(1)
 local term = data.getidx(dic, '</s>')
 
 while true do
-    local best, state = decoders.beam_search_wstate(
+     local best
+     best, state = decoders.beam_search_wstate(
                                 model2,
                                 rnn,
                                 state,
