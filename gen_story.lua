@@ -71,7 +71,7 @@ for word in line:gmatch("[^ ]+") do
     local idx = data.getidx(dic, word)
     table.insert(beg, idx)
 end
-beg = torch.CudaTensor(beg)
+beg = torch.CudaTensor(beg):view(-1, 1)
 local state = rnn:initializeHidden(1)
 local term = data.getidx(dic, '</s>')
 
