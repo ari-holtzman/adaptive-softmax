@@ -65,7 +65,7 @@ local model2 = nn.Sequential()
 
 local ne = 0
 io.write('>'); io.flush()
-local line = io.read(line)
+local line = io.read()
 local beg = {}
 for word in line:gmatch("[^ ]+") do
     local idx = data.getidx(dic, word)
