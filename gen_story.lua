@@ -65,7 +65,7 @@ local model2 = nn.Sequential()
 
 local ne = 0
 io.write('>'); io.flush()
-local line = '<unk> it was a dark and stormy night . </s> '--io.read()
+local line = '<unk> i was alone at home , reading a book . </s> the book was kind of boring . </s> '--io.read()
 local beg = {}
 for word in line:gmatch("[^ ]+") do
     local idx = data.getidx(dic, word)
