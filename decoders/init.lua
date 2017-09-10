@@ -87,7 +87,7 @@ decoders.beam_search =
                 local cand = beam[c]
                 local term = cand.t_loc.looking_for
                 local nu_seq = shallowcopy(cand.seq)
-                table.insert(nu_seq, w)
+                table.insert(nu_seq, w[1])
                 if w == term then
                     if best == nil or p > best.p then
                         best = Candidate( 
