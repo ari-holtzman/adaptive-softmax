@@ -75,7 +75,7 @@ beg = torch.CudaTensor(beg)
 local state = rnn:initializeHidden(1)
 local term = data.getidx(dic, '</s>')
 
-while True do
+while true do
                        
     local best, state = decoders.beam_search_wstate(
                                 model2,
