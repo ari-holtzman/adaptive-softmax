@@ -76,7 +76,6 @@ local state = rnn:initializeHidden(1)
 local term = data.getidx(dic, '</s>')
 
 while true do
-                       
     local best, state = decoders.beam_search_wstate(
                                 model2,
                                 rnn,
@@ -97,5 +96,4 @@ while true do
     
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end
-    line = f:read("*line")
 end
