@@ -188,8 +188,8 @@ decoders.beam_search_wstate =
                 local nu_seq = shallowcopy(cand.seq)
                 table.insert(nu_seq, w)
                 if w == term then
-                    local nu_state = { nu_hidden[1][1][c]:clone(),
-                                       nu_hidden[2][1][c]:clone()
+                    local nu_state = { nu_hidden[1][1][c]:clone():resize(1, 1, state_vec_len),
+                                       nu_hidden[2][1][c]:clone():resize(1, 1, state_vec_len)
                                      }
                     if best == nil or p > best.p then
                         best = Candidate( 
