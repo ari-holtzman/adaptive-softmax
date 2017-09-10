@@ -125,6 +125,7 @@ decoders.beam_search_wstate =
     function(model, rnn, init_state, dec, width, init_seq, term)
         -- prepare beam
         local proc_prefix = torch.CudaTensor(init_seq):view(-1, 1)
+        print(init_state)
         local inter = model:forward({init_state, proc_prefix})
         local base_probs = torch.CudaTensor(1):zero()
         local first_probs, first_idxs = dec:topknext(inter, 
