@@ -37,7 +37,7 @@ else
     error('Dictionary not found!')
 end
 local all = torch.load(config.modelpath)
-dic = data.sortthresholddictionary(dic, all.config.threshold)
+dic = data.sortthresholddictionary(dic, all.config.threshold or 2)
 collectgarbage()
 
 local ntoken = #dic.idx2word 
