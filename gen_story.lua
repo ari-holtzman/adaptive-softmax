@@ -64,6 +64,7 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
+io.write('>'); io.flush()
 local line = io.read(line)
 local beg = {}
 for word in line:gmatch("[^ ]+") do
