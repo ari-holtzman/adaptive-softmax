@@ -122,11 +122,9 @@ decoders.beam_search =
     end
 
 decoders.beam_search_wstate = 
-    function(model, rnn, init_state, dec, width, prefix, term)
+    function(model, rnn, init_state, dec, width, init_seq, term)
         -- prepare beam
-        local init_seq = {}
-        for i = 1, prefix:size(1) do table.insert(init_seq, prefix[i]) end
-        local proc_prefix = prefix:view(prefix:size(1), 1)
+        local proc_prefix = torch.CudaTensor(init_seq):view(-1, 1)
         local inter = model:forward({init_state, proc_prefix})
         local base_probs = torch.CudaTensor(1):zero()
         local first_probs, first_idxs = dec:topknext(inter, 
