@@ -88,6 +88,7 @@ while true do
 
     beg = torch.CudaTensor({term})
 
+    print(best)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
