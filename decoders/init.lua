@@ -87,7 +87,7 @@ decoders.beam_search =
                 local cand = beam[c]
                 local term = cand.t_loc.looking_for
                 local nu_seq = shallowcopy(cand.seq)
-                table.insert(nu_seq, w[1])
+                table.insert(nu_seq, w)
                 if w == term then
                     if best == nil or p > best.p then
                         best = Candidate( 
@@ -188,7 +188,7 @@ decoders.beam_search_wstate =
                 local cand = beam[c]
                 local term = cand.t_loc.looking_for
                 local nu_seq = shallowcopy(cand.seq)
-                table.insert(nu_seq, w)
+                table.insert(nu_seq, w[1])
                 if w == term then
                     local nu_state = { nu_hidden[1][1][c]:clone(),
                                        nu_hidden[2][1][c]:clone()
