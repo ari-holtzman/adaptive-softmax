@@ -86,6 +86,7 @@ while true do
                                 term,
                                 dic)
 
+    print(state)
     beg = torch.CudaTensor({term})
 
     print(best)
