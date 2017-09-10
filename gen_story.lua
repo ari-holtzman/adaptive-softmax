@@ -17,7 +17,6 @@ torch.setheaptracking(true)
 local cmd = torch.CmdLine('-', '-') cmd:option('-seed', 1, 'random gen seed')
 cmd:option('-dicpath',      '', 'Path to dictionary txt file')
 cmd:option('-modelpath',    '', 'Path to the model')
-cmd:option('-contextpath',    '', 'Path to text file with context words')
 cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 128, 'guesses to rerank')
 cmd:option('-r',  0, 'reward per word')
@@ -65,36 +64,30 @@ local model2 = nn.Sequential()
    :add(nn.JoinTable(1)):cuda()
 
 local ne = 0
-local f = assert(io.open(config.contextpath, "r"))
-local line = f:read("*line")
-while line ~= nil do
-    local cws, cwl = {}, {}
-    for word in line:gmatch("[^ ]+") do
-        local idx = data.getidx(dic, word)
-        if idx ~= 2 then 
-            table.insert(cwl, idx)
-            cws[idx] = true
-            io.write(dic.idx2word[idx] .. ' ')
-        end
-    end
-    print('')
-    local template = { 
-                        torch.CudaTensor({data.getidx(dic, '<beg>')}),
-                        torch.CudaTensor({data.getidx(dic, '<end>')})
-                     }
+local line = io.read(line)
+local beg = {}
+for word in line:gmatch("[^ ]+") do
+    local idx = data.getidx(dic, word)
+    table.insert(beg, idx)
+end
+beg = torch.CudaTensor(beg)
+local state = rnn:initalizeHidden(1)
+local term = data.getidx(dic, '</s>')
+
+while True do
                        
-    local best = decoders.contextual_beam_search(model2,
-                                              rnn,
-                                              dec,
-                                              config.k,
-                                              template,
-                                              dic,
-                                              config.r,
-                                              config.g,
-                                              config.maxsteps,
-                                              cws,
-                                              config.cr,
-                                              3)
+    local best, state = decoders.beam_search_wstate(
+                                model2,
+                                rnn,
+                                state,
+                                dec,
+                                config.k,
+                                beg,
+                                term,
+                                dic)
+
+    beg = torch.CudaTensor({term})
+
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
