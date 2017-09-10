@@ -220,7 +220,7 @@ decoders.beam_search_wstate =
             beam = nu_beam
         end
         
-        return best.seq, best.state
+        return best.seq, {best.state}
     end
 
 
