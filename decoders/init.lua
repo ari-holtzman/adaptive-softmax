@@ -185,7 +185,6 @@ decoders.beam_search_wstate =
                 local p, c, w = tok_probs[i], tok_idxs[i][1], tok_idxs[i][2]
                 local cand = beam[c]
                 local term = cand.t_loc.looking_for
-                print(cand.seq)
                 local nu_seq = shallowcopy(cand.seq)
                 table.insert(nu_seq, w)
                 if w == term then
