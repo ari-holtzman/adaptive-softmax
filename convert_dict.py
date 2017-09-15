@@ -12,7 +12,7 @@ n_words = 0
 with open(dicpath) as dic_file:
     for line in dic_file:
         index, word, num = word.split()
-        if num > args.m then
+        if num > args.m:
             freqs[word] = num
         else:
             freq['<unk>'] += num
