@@ -16,7 +16,7 @@ with open(args.dicpath) as dic_file:
         if num > args.m:
             freqs[word] = num
         else:
-            freq['<unk>'] += num
+            freqs['<unk>'] += num
         n_words += num
 
 
