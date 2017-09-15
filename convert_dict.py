@@ -3,7 +3,7 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('dicpath', type=str, help='path to dictionary')
 parser.add_argument('outpath', type=str, help='output path')
-parser.add_argument('-m', default=2, help='minimum occurrences')
+parser.add_argument('-m', default=10, help='minimum occurrences')
 args = parser.parse_args()
 
 freqs = {}
