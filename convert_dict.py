@@ -9,7 +9,7 @@ args = parser.parse_args()
 freqs = {}
 n_words = 0
 
-with open(dicpath) as dic_file:
+with open(args.dicpath) as dic_file:
     for line in dic_file:
         index, word, num = word.split()
         if num > args.m:
@@ -20,7 +20,7 @@ with open(dicpath) as dic_file:
 
 
 
-with open(outpath, 'w') as out_file:
+with open(args.outpath, 'w') as out_file:
     out_file.write('%d\n' % n_words)
     for word, count in sorted([ (k, v) for k, v in freqs.items() ]):
         out_file.write('%s %d\n' % (word, count))
