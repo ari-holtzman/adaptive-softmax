@@ -11,7 +11,6 @@ n_words = 0
 
 with open(args.dicpath) as dic_file:
     for line in dic_file:
-        print(line)
         index, word, num = line.split(' ')
         num = int(num)
         if len(freqs) < 2 or num > args.m:
