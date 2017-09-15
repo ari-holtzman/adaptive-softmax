@@ -23,5 +23,5 @@ with open(args.dicpath) as dic_file:
 
 with open(args.outpath, 'w') as out_file:
     out_file.write('%d\n' % n_words)
-    for word, count in sorted([ (k, v) for k, v in freqs.items() ]):
+    for count, word in sorted([ (v, k) for k, v in freqs.items() ])[::-1]:
         out_file.write('%s %d\n' % (word, count))
