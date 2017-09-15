@@ -612,12 +612,18 @@ decoders.template_beam_search =
                                                         base_probs)
                 local nu_hidden = rnn:getLastHidden()[1]
 
+                local next_ones = {}
+                for i = 1, tok_probs:size(1) do
+                    table.insert(next_ones, { p=tok_probs[i], n=tok_idxs[i][1], w=tok_idxs[i][2], f=dic.idx2freq[tok_idxs[i][2]] })
+                end
+
                 -- update beam
                 local nu_beam = {}
                 local i = 0
                 while #nu_beam < width do
                     i = i + 1
-                    local p, n, w = tok_probs[i], tok_idxs[i][1], tok_idxs[i][2]
+                    local info = next_ones[i]
+                    local p, n, w = info.p, info.n, info.w
                     local cand = beam[n]
                     local nu_seq = shallowcopy(cand.seq)
                     table.insert(nu_seq, w)
