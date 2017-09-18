@@ -123,6 +123,36 @@ function AdaptiveSoftMax:updateParameters(learningRate)
    end
 end
 
+function AdaptiveSoftMax:getLogProb(input)
+   local lsm   = nn.LogSoftMax():cuda()
+
+   self.head:updateOutput(input)
+
+   local bsz   = self.head.output:size(1)
+   local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+   lsm:updateOutput(self.head.output)
+   proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+      buffer = buffer:expand(bsz, tsz)
+      proba:narrow(2, pos, tsz):copy(buffer)
+   end
+
+   for i = 1, #self.tail do
+      local pos = self.cutoff[i] + 1
+      local tsz = self.cutoff[i+1] - self.cutoff[i]
+      self.tail[i]:updateOutput(input)
+      lsm:updateOutput(self.tail[i].output)
+      proba:narrow(2, pos, tsz):add(lsm.output)
+   end
+
+   return proba
+end
+
 function AdaptiveSoftMax:topk(input, k, l, nhyp)
    local lsm   = nn.LogSoftMax():cuda()
 
