@@ -311,3 +311,38 @@ function AdaptiveSoftMax:getSeqProbs(input, seqs)
 
    return seq_probs
 end
+
+-- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
+function AdaptiveSoftMax:nextbest(input, v)
+    local lsm   = nn.LogSoftMax():cuda()
+
+    self.head:updateOutput(input)
+
+    local bsz   = self.head.output:size(1)
+    local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+    lsm:updateOutput(self.head.output)
+    proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+       buffer = buffer:expand(bsz, tsz)
+       proba:narrow(2, pos, tsz):copy(buffer)
+    end
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       self.tail[i]:updateOutput(input)
+       lsm:updateOutput(self.tail[i].output)
+       proba:narrow(2, pos, tsz):add(lsm.output)
+    end
+
+    local next_word_probs = proba:view(-1, v)
+    next_word_probs = next_word_probs[next_word_probs:size(1)]
+    local _, idxs = torch.max(next_word_probs, 1)
+    local idx = idxs[1]
+    return idx
+end

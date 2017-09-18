@@ -74,7 +74,6 @@ while line ~= nil do
     for column in line:gmatch("[^\t]+") do
         if i == 0  then
             for word in column:gmatch("[^ ]+") do
-                io.write(word .. ' ')
                 local idx = data.getidx(dic, word)
                 if idx ~= 2 then 
                     table.insert(init_seq, idx)
@@ -85,17 +84,19 @@ while line ~= nil do
         end
         i = i + 1
     end
-    io.write('* ')
-    local term  = data.getidx(dic, '<end>')
-    --table.insert(init_seq, data.getidx(dic, '</s>'))
+    local term  = data.getidx(dic, '</s>')
+    table.insert(init_seq, term)
+    local template = { 
+                        torch.CudaTensor(init_seq),
+                        torch.CudaTensor({term})
+                    }
     local prefix = torch.CudaTensor(init_seq)
-    local best = decoders.finish_prefix_argmax(model2,
+    local best = decoders.template_beam_search(model2,
                                               rnn,
                                               dec,
-                                              prefix,
-                                              term,
-                                              dic,
-                                              100)
+                                              config.k,
+                                              template,
+                                              dic)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end

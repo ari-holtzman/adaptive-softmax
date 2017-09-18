@@ -616,6 +616,7 @@ decoders.template_beam_search =
                 for i = 1, tok_probs:size(1) do
                     table.insert(next_ones, { p=tok_probs[i], n=tok_idxs[i][1], w=tok_idxs[i][2], f=dic.idx2freq[tok_idxs[i][2]] })
                 end
+                --table.sort(next_ones,  function (a, b) return a.f < b.f end)
 
                 -- update beam
                 local nu_beam = {}
@@ -664,6 +665,26 @@ decoders.template_beam_search =
         end
             
         return result
+    end
+
+decoders.finish_prefix_argmax =
+    function(model, rnn, dec, prefix, term, dic, max)
+        local result = {}
+        local last = {}
+        for i = 1, prefix:size(1) do table.insert(result, prefix[i]) end
+        local proc_prefix = prefix:view(prefix:size(1), 1)
+        local inter = model:forward({rnn:initializeHidden(1), proc_prefix})
+        local v = #dic.idx2word
+        local idx = dec:nextbest(inter, v)
+        while idx ~= term do
+            table.insert(result, idx)
+            table.insert(last, idx)
+            inter = model:forward({rnn:getLastHidden(), torch.CudaTensor({idx})})
+            idx = dec:nextbest(inter, v)
+            if #last >= max then break end
+        end
+        table.insert(last, term)
+        return last
     end
 
 decoders.branching_template_beam_search =

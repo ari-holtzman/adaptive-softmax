@@ -5,8 +5,7 @@ require 'cunn'
 require 'rnnlib'
 
 local tablex  = require 'pl.tablex'
-local stringx = require 'pl.stringx'
-local tnt     = require 'torchnet'
+local stringx = require 'pl.stringx' local tnt     = require 'torchnet'
 local data    = require 'data'
 local utils   = require 'utils'
 
@@ -74,7 +73,6 @@ while line ~= nil do
     for column in line:gmatch("[^\t]+") do
         if i == 0  then
             for word in column:gmatch("[^ ]+") do
-                io.write(word .. ' ')
                 local idx = data.getidx(dic, word)
                 if idx ~= 2 then 
                     table.insert(init_seq, idx)
@@ -85,19 +83,24 @@ while line ~= nil do
         end
         i = i + 1
     end
-    io.write('* ')
-    local term  = data.getidx(dic, '<end>')
-    --table.insert(init_seq, data.getidx(dic, '</s>'))
+    local term  = data.getidx(dic, '</s>')
+    table.insert(init_seq, data.getidx(dic, '</s>'))
     local prefix = torch.CudaTensor(init_seq)
-    local best = decoders.finish_prefix_argmax(model2,
+    local n_prefix = prefix:size(1)
+    local template = {
+                        prefix,
+                        torch.CudaTensor({term})
+                     }
+    local best = decoders.template_beam_search(model2,
                                               rnn,
                                               dec,
-                                              prefix,
-                                              term,
+                                              config.k,
+                                              template,
                                               dic,
                                               100)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
+        if i == n_prefix then io.write('* ') end
     end
     print('')
     
