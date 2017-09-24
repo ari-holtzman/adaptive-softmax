@@ -965,7 +965,7 @@ decoders.stochastic_template_lengthbiased_beamsearch =
             local first_probs, first_idxs = dec:sampleknext(inter, 
                                                          width+1,
                                                          proc_prefix,
-                                                         base_rewards)
+                                                         base_probs)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
             local raw_hidden = rnn:getLastHidden()

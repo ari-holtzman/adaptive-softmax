@@ -19,9 +19,9 @@ cmd:option('-dicpath',   '', 'Path to dictionary txt file')
 cmd:option('-modelpath', '', 'Path to the model')
 cmd:option('-initpath',  '', 'Path to text file with initial secction of review')
 cmd:option('-devid', 1,  'GPU to use')
-cmd:option('-k',        32, 'guesses to rerank')
-cmd:option('-r',        10, 'reward per word')
-cmd:option('-g',        0.995, 'reward decay')
+cmd:option('-k', 32, 'guesses to rerank')
+cmd:option('-r', 10, 'reward per word')
+cmd:option('-g', 0.995, 'reward decay')
 
 local config = cmd:parse(arg)
 
