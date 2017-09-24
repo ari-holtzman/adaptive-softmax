@@ -74,7 +74,7 @@ while line ~= nil do
     for column in line:gmatch("[^\t]+") do
         if i == 0  then
             for word in column:gmatch("[^ ]+") do
-                io.write(word .. ' ')
+                --io.write(word .. ' ')
                 local idx = data.getidx(dic, word)
                 if idx ~= 2 then 
                     table.insert(init_seq, idx)
@@ -85,7 +85,7 @@ while line ~= nil do
         end
         i = i + 1
     end
-    io.write('* ')
+    --io.write('* ')
     local term  = data.getidx(dic, '<end>')
     --table.insert(init_seq, data.getidx(dic, '</s>'))
     local prefix = torch.CudaTensor(init_seq)

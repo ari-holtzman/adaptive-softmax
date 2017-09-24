@@ -159,6 +159,69 @@ function AdaptiveSoftMax:topk(input, k, l, nhyp)
 end
 
 -- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
+function AdaptiveSoftMax:sampleknext(input, k, seqs, base_probs)
+    local lsm   = nn.LogSoftMax():cuda()
+
+    self.head:updateOutput(input)
+
+    local bsz   = self.head.output:size(1)
+    local proba = torch.zeros(bsz, self.cutoff[#self.cutoff]):cuda()
+
+    lsm:updateOutput(self.head.output)
+    proba:narrow(2, 1, self.hsz):add(lsm.output:narrow(2, 1, self.hsz))
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       local buffer = lsm.output:narrow(2, self.cutoff[1] + i, 1)
+       buffer = buffer:expand(bsz, tsz)
+       proba:narrow(2, pos, tsz):copy(buffer)
+    end
+
+    for i = 1, #self.tail do
+       local pos = self.cutoff[i] + 1
+       local tsz = self.cutoff[i+1] - self.cutoff[i]
+       self.tail[i]:updateOutput(input)
+       lsm:updateOutput(self.tail[i].output)
+       proba:narrow(2, pos, tsz):add(lsm.output)
+    end
+
+    local l, n = seqs:size(1), seqs:size(2)
+    local v = proba:nElement() / (l * n)
+    local all_word_probs = proba:resize(l, n, v)
+    local seq_probs = base_probs:clone()
+    for i = 1, l-1 do
+        for j = 1, n do
+            seq_probs[j] = seq_probs[j] + all_word_probs[i][j][seqs[i+1][j]]
+        end
+    end
+    local next_word_probs = all_word_probs[l]
+    local samples = torch.multinomial(torch.exp(next_word_probs), k)
+    local stable = {}
+    for i = 1, n do
+        local seq_prob = seq_probs[i]
+        for j = 1, k do
+            local sample = {}
+            local idx = samples[i][j]
+            sample.p = seq_prob + next_word_probs[i][idx]
+            sample.idxs = {i, idx}
+            table.insert(stable, sample)
+        end
+    end
+    table.sort(stable, function (a, b)  return a.p > b.p end)
+    local k_seq_probs, k_word_idxs = {}, {}
+    for _, sample in ipairs(stable) do
+        p, idxs = sample.p, sample.idxs
+        table.insert(k_seq_probs, p)
+        table.insert(k_word_idxs, idxs)
+    end
+    k_seq_probs = torch.CudaTensor(k_seq_probs)
+    k_word_idxs = torch.CudaTensor(k_word_idxs)
+
+   return k_seq_probs, k_word_idxs
+end
+
+-- NOTE THAT SEQUENCES MUST BE THE SAME SIZE, PADDING IS NOT RESPECTED
 function AdaptiveSoftMax:topknext(input, k, seqs, base_probs)
     local lsm   = nn.LogSoftMax():cuda()
 

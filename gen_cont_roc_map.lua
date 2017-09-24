@@ -75,27 +75,27 @@ while line ~= nil do
     local i = 0
     for column in line:gmatch("[^\t]+") do
         if i == 0  then
-            io.write('init: ')
+            --io.write('init: ')
             for word in column:gmatch("[^ ]+") do
                 local idx = data.getidx(dic, word)
                 if idx ~= 2 then 
                     table.insert(init_seq, idx)
-                    io.write(dic.idx2word[idx] .. ' ')
+                    --io.write(dic.idx2word[idx] .. ' ')
                 end
             end
-            print('')
+            --print('')
         elseif i == 1 then
-            io.write('cont: ')
+            --io.write('cont: ')
             for word in column:gmatch("[^ ]+") do
                 local idx = data.getidx(dic, word)
                 if idx ~= 2 then 
                     table.insert(cwl, idx)
                     cws[idx] = true
-                    io.write(dic.idx2word[idx] .. ' ')
+                   -- io.write(dic.idx2word[idx] .. ' ')
                 end
             end
         elseif i == 2 then
-            print('\ntrue: ' .. column)
+            --print('\ntrue: ' .. column)
         else
             break
         end
@@ -113,12 +113,12 @@ while line ~= nil do
                                               config.k,
                                               template,
                                               dic)
-   io.write('pred: ')
+   --io.write('pred: ')
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
     print('')
-    print('---------------------------------')
+    --print('---------------------------------')
     
     ne = ne + 1
     if ne % 10 == 0 then collectgarbage() end
