@@ -1004,7 +1004,7 @@ decoders.stochastic_template_lengthbiased_beamsearch =
             local max_r = r / (1 - g) 
             while (best == nil) or (best.r < (beam[1].p + max_r)) do
                 steps = steps + 1
-                if v then
+                if v > 0 then
                     for i = 1, #beam[1].seq do
                         io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
                     end

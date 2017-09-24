@@ -22,7 +22,7 @@ cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 32, 'guesses to rerank')
 cmd:option('-r', 10, 'reward per word')
 cmd:option('-g', 0.995, 'reward decay')
-cmd:option('-v', 1, 'verbosity level')
+cmd:option('-v', 0, 'verbosity level')
 local config = cmd:parse(arg)
 
 torch.manualSeed(config.seed)
