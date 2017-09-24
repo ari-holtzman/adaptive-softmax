@@ -22,7 +22,7 @@ cmd:option('-devid', 1,  'GPU to use')
 cmd:option('-k', 32, 'guesses to rerank')
 cmd:option('-r', 10, 'reward per word')
 cmd:option('-g', 0.995, 'reward decay')
-
+cmd:option('-v', 1, 'verbosity level')
 local config = cmd:parse(arg)
 
 torch.manualSeed(config.seed)
@@ -84,7 +84,8 @@ while line ~= nil do
                     template,
                     dic,
                     config.r,
-                    config.g)
+                    config.g,
+                    config.v)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
     end
