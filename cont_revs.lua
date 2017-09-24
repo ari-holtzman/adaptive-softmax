@@ -88,6 +88,9 @@ while line ~= nil do
                     config.v)
     for i = 1, #best do
         io.write(dic.idx2word[best[i]] .. ' ')
+        if i == #init then
+          io.write('<begin_generation> ')
+        end
     end
     print('')
     
