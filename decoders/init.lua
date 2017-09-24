@@ -950,7 +950,7 @@ decoders.length_biased_beam_search =
     end
 
 decoders.stochastic_template_lengthbiased_beamsearch = 
-    function(model, rnn, dec, width, template, dic, r, g)
+    function(model, rnn, dec, width, template, dic, r, g, v)
         local prefix = template[1]
         local inter
         local init_len = template[1]:size(1)
@@ -965,7 +965,7 @@ decoders.stochastic_template_lengthbiased_beamsearch =
             local first_probs, first_idxs = dec:sampleknext(inter, 
                                                          width+1,
                                                          proc_prefix,
-                                                         base_probs)
+                                                         base_rewards)
             first_idxs = first_idxs:t()
             first_idxs = first_idxs[2]
             local raw_hidden = rnn:getLastHidden()
@@ -1004,7 +1004,7 @@ decoders.stochastic_template_lengthbiased_beamsearch =
             local max_r = r / (1 - g) 
             while (best == nil) or (best.r < (beam[1].p + max_r)) do
                 steps = steps + 1
-                if v > 0 then
+                if v then
                     for i = 1, #beam[1].seq do
                         io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
                     end
