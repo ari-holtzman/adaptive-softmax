@@ -988,7 +988,8 @@ decoders.stochastic_template_lengthbiased_beamsearch =
                                                 state = init_hidden,
                                                 next_token = first_idxs[i],
                                                 seq = seq,
-                                                r =  first_rewards[i]
+                                                r = first_probs[i] + r,
+                                                p = first_probs[i]
                                           } )
                     table.insert(beam, cand)
                 end
@@ -997,17 +998,17 @@ decoders.stochastic_template_lengthbiased_beamsearch =
     
             -- beam search
             local best = nil
-            local base_rewards = torch.CudaTensor(width):zero()
+            local base_probs = torch.CudaTensor(width):zero()
             local input = torch.CudaTensor(1, width)
             local steps = 0
-            while steps < max_steps do
+            local max_r = r / (1 - g) 
+            while (best == nil) or (best.r < (beam[1].p + max_r)) do
                 steps = steps + 1
                 if v > 0 then
                     for i = 1, #beam[1].seq do
                         io.write(dic.idx2word[beam[1].seq[i]] .. ' ')
                     end
                     print('')
-                    
                 end
 
                 -- prepare state
@@ -1015,23 +1016,20 @@ decoders.stochastic_template_lengthbiased_beamsearch =
                                     torch.CudaTensor(1, width, state_vec_len),
                                     torch.CudaTensor(1, width, state_vec_len)
                                   }
-                local cwss = {}
                 for i = 1, width do
                     cur_state[1][1][i] = beam[i].state[1]
                     cur_state[2][1][i] = beam[i].state[2]
                     input[1][i] = beam[i].next_token
-                    base_rewards[i] = beam[i].r
-                    table.insert(cwss, beam[i].cws)
+                    base_probs[i] = beam[i].p
                 end
 
                 -- step RNN once
                 local inter = model:forward({{cur_state}, input})
-                local tok_rewards, tok_idxs = dec:topknextfunky(inter,
-                                                        math.max(width*(width+1), width*2+1),
-                                                        input,
-                                                        base_rewards,
-                                                        cwss,
-                                                        cr)
+                local tok_probs, tok_idxs = dec:sampleknext(
+                                                inter,
+                                                width+1,
+                                                input,
+                                                base_probs)
                 local nu_hidden = rnn:getLastHidden()[1]
 
                 -- update beam
@@ -1039,58 +1037,41 @@ decoders.stochastic_template_lengthbiased_beamsearch =
                 local i = 0
                 while #nu_beam < width do
                     i = i + 1
-                    local cur_r, n, w = tok_rewards[i], tok_idxs[i][1], tok_idxs[i][2]
+                    local cur_p, n, w = tok_probs[i], tok_idxs[i][1], tok_idxs[i][2]
                     local cand = beam[n]
-                    local rep = false
-                    if ll > 0  and #cand.seq >= ll  then
-                        for pos = 1, #cand.seq - ll + 1 do
-                          local cur_rep =  true
-                          for off = 0, ll-2 do
-                            cur_rep = cur_rep and (cand.seq[pos+off] == cand.seq[#cand.seq-ll+off+2])
-                          end
-                          cur_rep = cur_rep and (cand.seq[pos+ll-1] == w)
-                          rep = rep or cur_rep
-                          if rep then break end
-                        end
-                    end
-                     if not rep then
-                        local nu_seq = shallowcopy(cand.seq)
-                        table.insert(nu_seq, w)
-                        local nu_r = cur_r 
-                        nu_r = nu_r + (r * math.pow(g, #nu_seq-init_len))
-                        local nu_state = { 
-                                           nu_hidden[1][1][n]:clone(),
-                                           nu_hidden[2][1][n]:clone()
-                                         }
-                        
-                        local nu_cws = shallowcopy(cand.cws)
-                        nu_cws[w] = nil
-                        if w == term then
-                            if best == nil or nu_r > best.r then
-                                for i = 2, suffix:size(1) do
-                                    table.insert(nu_seq, suffix[i])
-                                end
-                                best = Candidate( 
-                                                  { 
-                                                    cws = nu_cws,
-                                                    r = nu_r, 
-                                                    seq = nu_seq,
-                                                    state = nu_state
-                                                  }
-                                                )
+                    local nu_seq = shallowcopy(cand.seq)
+                    table.insert(nu_seq, w)
+                    local nu_r = cur_p + (r * math.pow(g, #nu_seq-init_len))
+                    local nu_state = { 
+                                       nu_hidden[1][1][n]:clone(),
+                                       nu_hidden[2][1][n]:clone()
+                                     }
+                    
+                    if w == term then
+                        if best == nil or nu_r > best.r then
+                            for i = 2, suffix:size(1) do
+                                table.insert(nu_seq, suffix[i])
                             end
-                        else
-                            local nu_cand = Candidate(
-                                                        {
-                                                            r = nu_r,
-                                                            next_token = w,
-                                                            seq = nu_seq,
-                                                            state = nu_state,
-                                                            cws = nu_cws
-                                                        }
-                                                     )
-                            table.insert(nu_beam, nu_cand)
+                            best = Candidate( 
+                                              { 
+                                                p = cur_p,
+                                                r = nu_r, 
+                                                seq = nu_seq,
+                                                state = nu_state
+                                              }
+                                            )
                         end
+                    else
+                        local nu_cand = Candidate(
+                                                    {
+                                                        p = cur_p,
+                                                        r = nu_r,
+                                                        next_token = w,
+                                                        seq = nu_seq,
+                                                        state = nu_state
+                                                    }
+                                                 )
+                        table.insert(nu_beam, nu_cand)
                     end
                 end
                 beam = nu_beam
